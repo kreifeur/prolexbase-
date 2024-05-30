@@ -21,6 +21,7 @@ const Add = () => {
 
   const fetchdata = async () => {
     const res = await axios.post("http://127.0.0.1:5000/add", {
+      token:localStorage.token,
       ...inputs,
       langue: lang,
     });

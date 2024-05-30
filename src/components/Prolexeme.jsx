@@ -15,7 +15,7 @@ const Prolexeme = () => {
     source: "",
   });
   const getprolexeme = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/getprolexeme", inputs);
+    const res = await axios.post("http://127.0.0.1:5000/getprolexeme", {...inputs,token:localStorage.token,});
     setUpdata({
       num_prolexeme: res.data.res[0]? res.data.res[0]:'',
       num_pivot: res.data.res[2]? res.data.res[2]:'',
@@ -31,7 +31,7 @@ const Prolexeme = () => {
   const deleteprolexeme = async () => {
     const res = await axios.post(
       "http://127.0.0.1:5000/deleteprolexeme",
-      inputs
+      {...inputs,token:localStorage.token,}
     );
     setInputs({
       langue: localStorage.lan,
@@ -50,6 +50,7 @@ const Prolexeme = () => {
 
   const updateit = async () => {
     const res = await axios.post("http://127.0.0.1:5000/updateprolexeme", {
+      token:localStorage.token,
       ...updata,
       ...inputs,
     });

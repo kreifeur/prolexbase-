@@ -13,7 +13,7 @@ const derive = () => {
       id_derive: "",
       derive: "",
     });
-    const res = await axios.post("http://127.0.0.1:5000/getderive", {
+    const res = await axios.post("http://127.0.0.1:5000/getderive", {token:localStorage.token,
       prolexeme: prolexeme,
       langue: langue,
     });
@@ -21,7 +21,7 @@ const derive = () => {
   };
 
   const ajouter = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/ajouterderive", {
+    const res = await axios.post("http://127.0.0.1:5000/ajouterderive", {token:localStorage.token,
       ...updata,
       prolexeme: prolexeme,
       langue: langue,
@@ -31,7 +31,7 @@ const derive = () => {
   };
 
   const update = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/modifierderive", {
+    const res = await axios.post("http://127.0.0.1:5000/modifierderive", {token:localStorage.token,
       id_derive: item[6],
       derive: item[7],
       prolexeme: prolexeme,
@@ -41,7 +41,7 @@ const derive = () => {
   };
 
   const deletederive = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/deletederive", {
+    const res = await axios.post("http://127.0.0.1:5000/deletederive", {token:localStorage.token,
       id_derive: item[6],
       derive: item[7],
       langue: langue,

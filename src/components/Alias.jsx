@@ -13,7 +13,7 @@ const Alias = () => {
       id_alias: "",
       alias: "",
     });
-    const res = await axios.post("http://127.0.0.1:5000/getalias", {
+    const res = await axios.post("http://127.0.0.1:5000/getalias", {token:localStorage.token,
       prolexeme: prolexeme,
       langue: langue
     });
@@ -21,7 +21,7 @@ const Alias = () => {
   };
 
   const ajouter = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/ajouteralias", {
+    const res = await axios.post("http://127.0.0.1:5000/ajouteralias", {token:localStorage.token,
       ...updata,
       langue: langue,
       prolexeme: prolexeme,
@@ -30,7 +30,7 @@ const Alias = () => {
   };
 
   const update = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/modifieralias", {
+    const res = await axios.post("http://127.0.0.1:5000/modifieralias", {token:localStorage.token,
       langue: langue,
       id_alias: item[6],
       alias: item[7],
@@ -40,7 +40,7 @@ const Alias = () => {
   };
 
   const deletealias = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/deletealias", {
+    const res = await axios.post("http://127.0.0.1:5000/deletealias", {token:localStorage.token,
       langue: langue,
       id_alias: item[6],
       alias: item[7],

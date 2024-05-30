@@ -28,7 +28,7 @@ const Pivot = () => {
     langue: "",
   });
   const addpivot = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/addpivot", {
+    const res = await axios.post("http://127.0.0.1:5000/addpivot", {token:localStorage.token,
       ...updata,
       numpivot: numpivot,
     });
@@ -36,7 +36,7 @@ const Pivot = () => {
   };
   /* updatepivot */
   const updatepivot = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/updatepivot", {
+    const res = await axios.post("http://127.0.0.1:5000/updatepivot", {token:localStorage.token,
       ...updata,
       numpivot: numpivot,
     });
@@ -44,7 +44,7 @@ const Pivot = () => {
   };
 
   const ajouter = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/ajouter", {
+    const res = await axios.post("http://127.0.0.1:5000/ajouter", {token:localStorage.token,
       ...check,
       numpivot: numpivot,
     });
@@ -68,7 +68,7 @@ const Pivot = () => {
     setAccessibility("");
     setMyronym("");
     setSynonym("");
-    const res = await axios.post("http://127.0.0.1:5000/getpivot", {
+    const res = await axios.post("http://127.0.0.1:5000/getpivot", {token:localStorage.token,
       numpivot: numpivot,
       langue: langue,
     });
