@@ -2,8 +2,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AdvancedSearch from "./components/AdvancedSearch";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import Home from "./pages/Home";
 import Add from "./components/Add";
 import Login from "./pages/Login";
 import TopNot from "./components/TopNot";
