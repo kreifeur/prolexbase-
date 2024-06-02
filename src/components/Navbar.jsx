@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-[10vh] bg-gradient-to-r from-blue-600 to-cyan-600 text-white h-[10vh] ">
+    <div className="flex items-center justify-between sm:px-[10vh] px-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white h-[10vh] ">
       <Link to={"/"} className="text-2xl font-bold tracking-wider">
         Prolexbase
       </Link>

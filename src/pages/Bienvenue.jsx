@@ -17,18 +17,18 @@ const Bienvenue = () => {
             "Bienvenus sur le Dictionnaire de noms propres"
           ]}
       </div>
-      <div className="flex items-center gap-[10vh] flex-col sm:flex-row  w-full">
+      <div className="flex items-center gap-[10vh] flex-col sm:flex-row  w-full px-4">
         <div className="tracking-wider bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent sm:text-7xl text-5xl font-extrabold w-full text-center">
           {localStorage.getItem("lan") &&
             data[localStorage.getItem("lan")]["Prolexbase"]}
-          <div className="flex gap-[50vh]">
-            <div>
-              <img src={francois} />
-            </div>
+        </div>
+        <div className="flex sm:gap-[50vh] gap-4">
+          <div>
+            <img src={francois} />
+          </div>
 
-            <div>
-              <img src={oran} />
-            </div>
+          <div>
+            <img src={oran} />
           </div>
         </div>
       </div>
