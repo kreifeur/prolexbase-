@@ -202,19 +202,19 @@ const Main = () => {
             </div>
 
             <div className="flex items-center justify-between w-[100%] sm:w-[70%] px-4">
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col  items-center h-full justify-between">
                 <div className="px-3 py-1 border rounded-md">un pays</div>
                 <img src={pays} alt="" />
                 <div className="text-xl text-blue-500 ">France</div>
               </div>
 
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col  items-center h-full justify-between">
                 <div className="px-3 py-1 border rounded-md">un nom</div>
                 <img src={nom} alt="" />
                 <div className="text-xl text-blue-500 ">Ninou</div>
               </div>
 
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col  items-center h-full justify-between">
                 <div className="px-3 py-1 border rounded-md">un prénom</div>
                 <img src={prenom} alt="" />
                 <div className="text-xl text-blue-500 ">Adel</div>
