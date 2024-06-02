@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
 
 /* import { changeLanguage } from "../features/counter/counterSlice"; */
 const Navbar = () => {
@@ -31,7 +32,10 @@ const Navbar = () => {
         {window.localStorage.getItem("token") ? (
           <button onClick={logout}>LOGOUT</button>
         ) : null}
+      </div>
 
+      <div className="sm:hidden flex">
+        <FiMenu className="text-4xl" />
       </div>
     </div>
   );

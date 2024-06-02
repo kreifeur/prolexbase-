@@ -17,7 +17,7 @@ const Bienvenue = () => {
             "Bienvenus sur le Dictionnaire de noms propres"
           ]}
       </div>
-      <div className="flex items-center gap-[10vh] flex-col sm:flex-row  w-full px-4">
+      <div className="flex items-center sm:gap-[10vh] gap-10 flex-col sm:flex-row  w-full px-4">
         <div className="tracking-wider bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent sm:text-7xl text-5xl font-extrabold w-full text-center">
           {localStorage.getItem("lan") &&
             data[localStorage.getItem("lan")]["Prolexbase"]}
