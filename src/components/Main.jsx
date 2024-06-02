@@ -40,9 +40,9 @@ const Main = () => {
     fetchdata();
   };
   return (
-    <div className="flex h-[90vh]">
+    <div className="flex h-[90vh] sm:flex-row flex-col">
       {/* SIDEBAR */}
-      <div className="flex-[2] flex flex-col items-center  p-4 gap-8 border-r">
+      <div className="flex-[2] flex flex-col items-center  p-4 gap-8 sm:border-r border-b">
         <div className="w-[90%]">
           <div className="mb-1 p-1 font-bold">
             Choisir la langue de recherche
@@ -181,27 +181,27 @@ const Main = () => {
         ) : (
           <div className="flex flex-col gap-[10vh] items-center justify-center h-full">
             <div className="text-3xl font-bold text-blue-500">Prolexbase</div>
-            <div className="w-[80%] flex items-center h-[6vh]">
-              <div className="h-full w-[5%] flex items-center justify-center border border-blue-500 bg-blue-500 cursor-pointer">
+            <div className="sm:w-[80%] w-[100%] flex items-center h-[6vh]">
+              <div className="h-full w-[10%] sm:w-[5%] flex items-center justify-center border border-blue-500 bg-blue-500 cursor-pointer">
                 <IoSearch onClick={send} className=" text-xl text-white" />
               </div>
 
               <input
                 onChange={(e) => setInputs({ ...inputs, word: e.target.value })}
-                className="border border-blue-500 w-[70%]  h-full outline-none px-3"
+                className="border border-blue-500 w-[50%] sm:w-[70%]  h-full outline-none px-3"
                 placeholder="Nom à rechercher"
                 type="text"
               />
               <Link
                 to="/AdvancedSearch"
-                className="h-full w-[25%] flex items-center justify-center border border-blue-500 bg-blue-500 text-white gap-2"
+                className="h-full w-[40%] sm:w-[25%] flex items-center justify-center border border-blue-500 bg-blue-500 text-white gap-2"
               >
-                <FaSearchPlus className=" text-xl " />
+                <FaSearchPlus className=" text-md " />
                 Recherche avancé
               </Link>
             </div>
 
-            <div className="flex items-center justify-between w-[70%]">
+            <div className="flex items-center justify-between w-[100%] sm:w-[70%] px-4">
               <div className="flex flex-col gap-3 items-center">
                 <div className="px-3 py-1 border rounded-md">un pays</div>
                 <img src={pays} alt="" />

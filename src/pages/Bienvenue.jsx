@@ -10,14 +10,14 @@ import { useNavigate } from "react-router-dom";
 const Bienvenue = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-center min-h-[90vh] flex-col gap-[5vh] ">
+    <div className="flex items-center justify-center min-h-[90vh] flex-col gap-[5vh] p-4">
       <div className="mt-5 text-4xl font-extrabold leading-[1.15] text-black sm:text-5xl text-center ">
         {localStorage.getItem("lan") &&
           data[localStorage.getItem("lan")][
             "Bienvenus sur le Dictionnaire de noms propres"
           ]}
       </div>
-      <div className="flex items-center sm:gap-[10vh] gap-10 flex-col sm:flex-row  w-full px-4">
+      <div className="flex items-center gap-5 flex-col w-full px-4">
         <div className="tracking-wider bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent sm:text-7xl text-5xl font-extrabold w-full text-center">
           {localStorage.getItem("lan") &&
             data[localStorage.getItem("lan")]["Prolexbase"]}
@@ -38,7 +38,7 @@ const Bienvenue = () => {
         {localStorage.getItem("lan") &&
           data[localStorage.getItem("lan")]["Choisir la langue de L interface"]}
       </div>
-      <div className="flex items-center gap-[10vh] sm:flex-row flex-col">
+      <div className="flex items-center gap-[10vh] sm:flex-row flex-col min-h-[1vh]">
         {" "}
         <img
           onClick={() => {
