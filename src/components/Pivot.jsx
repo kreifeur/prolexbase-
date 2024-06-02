@@ -28,7 +28,8 @@ const Pivot = () => {
     langue: "",
   });
   const addpivot = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/addpivot", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/addpivot", {
+      token: localStorage.token,
       ...updata,
       numpivot: numpivot,
     });
@@ -36,7 +37,8 @@ const Pivot = () => {
   };
   /* updatepivot */
   const updatepivot = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/updatepivot", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/updatepivot", {
+      token: localStorage.token,
       ...updata,
       numpivot: numpivot,
     });
@@ -44,7 +46,8 @@ const Pivot = () => {
   };
 
   const ajouter = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/ajouter", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/ajouter", {
+      token: localStorage.token,
       ...check,
       numpivot: numpivot,
     });
@@ -68,7 +71,8 @@ const Pivot = () => {
     setAccessibility("");
     setMyronym("");
     setSynonym("");
-    const res = await axios.post("http://127.0.0.1:5000/getpivot", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/getpivot", {
+      token: localStorage.token,
       numpivot: numpivot,
       langue: langue,
     });
@@ -91,200 +95,222 @@ const Pivot = () => {
     });
   };
   return (
-    <div className="flex">
-      <div className="w-[70%] flex flex-col gap-3">
-        <select
-          className="p-1 outline-none  border rounded-md w-[400px]"
-          value={langue}
-          onChange={(e) => setLangue(e.target.value)}
-        >
-          <option value="fra">Francais</option>
-          <option value="eng">Englais</option>
-          <option value="arb">Arabe</option>
-        </select>
+    <div>
+      <div className="flex flex-col sm:flex-row gap-10 ">
+        <div className="sm:w-[70%] w-full flex flex-col gap-3">
+          <select
+            className="p-1 outline-none  border rounded-md  w-full"
+            value={langue}
+            onChange={(e) => setLangue(e.target.value)}
+          >
+            <option value="fra">Francais</option>
+            <option value="eng">Englais</option>
+            <option value="arb">Arabe</option>
+          </select>
 
-        <div className="flex gap-2 items-center ">
-          <div>Num pivot :</div>
-          <input
-            value={numpivot}
-            onChange={(e) => setNumpivot(e.target.value)}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-          <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={addpivot}>ajouter</button>
-          <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={modifier}>modifier</button>
-          <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={updatepivot}>update</button>
-        </div>
-        <div className="flex gap-2 items-center ">
-          <div>Prolexeme :</div>
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, prolexeme_fra: e.target.value })
-            }
-            value={updata.prolexeme_fra}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, prolexeme_arb: e.target.value })
-            }
-            value={updata.prolexeme_arb}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, prolexeme_eng: e.target.value })
-            }
-            value={updata.prolexeme_eng}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-        </div>
-        <div className="flex gap-2 items-center ">
-          <div>Source :</div>
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, source_fra: e.target.value })
-            }
-            value={updata.source_fra}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, source_arb: e.target.value })
-            }
-            value={updata.source_arb}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, source_eng: e.target.value })
-            }
-            value={updata.source_eng}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-        </div>
-        <div className="flex gap-2 items-center ">
-          <div>Existence :</div>
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, existance: e.target.value })
-            }
-            value={updata.existance}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-        </div>
+          <div className="flex gap-2 items-center flex-col sm:flex-row ">
+            <div>Num pivot :</div>
+            <input
+              value={numpivot}
+              onChange={(e) => setNumpivot(e.target.value)}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+            <button
+              className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
+              onClick={addpivot}
+            >
+              ajouter
+            </button>
+            <button
+              className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
+              onClick={modifier}
+            >
+              modifier
+            </button>
+            <button
+              className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
+              onClick={updatepivot}
+            >
+              update
+            </button>
+          </div>
+          <div className="flex gap-2 items-center flex-col sm:flex-row ">
+            <div>Prolexeme :</div>
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, prolexeme_fra: e.target.value })
+              }
+              value={updata.prolexeme_fra}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, prolexeme_arb: e.target.value })
+              }
+              value={updata.prolexeme_arb}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, prolexeme_eng: e.target.value })
+              }
+              value={updata.prolexeme_eng}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+          </div>
+          <div className="flex gap-2 items-center flex-col sm:flex-row ">
+            <div>Source :</div>
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, source_fra: e.target.value })
+              }
+              value={updata.source_fra}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, source_arb: e.target.value })
+              }
+              value={updata.source_arb}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, source_eng: e.target.value })
+              }
+              value={updata.source_eng}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+          </div>
+          <div className="flex gap-2 items-center flex-col sm:flex-row ">
+            <div>Existence :</div>
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, existance: e.target.value })
+              }
+              value={updata.existance}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+          </div>
 
-        <div className="flex gap-2 items-center ">
-          <div>type :</div>
-          <input
-            onChange={(e) => setUpdata({ ...updata, type: e.target.value })}
-            value={updata.type}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-        </div>
-        <div className="flex gap-2 items-center ">
-          <div>Notoriete :</div>
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, notoriete_fra: e.target.value })
-            }
-            value={updata.notoriete_fra}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
+          <div className="flex gap-2 items-center flex-col sm:flex-row ">
+            <div>type :</div>
+            <input
+              onChange={(e) => setUpdata({ ...updata, type: e.target.value })}
+              value={updata.type}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
+          </div>
+          <div className="flex gap-2 items-center flex-col sm:flex-row ">
+            <div>Notoriete :</div>
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, notoriete_fra: e.target.value })
+              }
+              value={updata.notoriete_fra}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
 
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, notoriete_arb: e.target.value })
-            }
-            value={updata.notoriete_arb}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, notoriete_arb: e.target.value })
+              }
+              value={updata.notoriete_arb}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
 
-          <input
-            onChange={(e) =>
-              setUpdata({ ...updata, notoriete_eng: e.target.value })
-            }
-            value={updata.notoriete_eng}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
-        </div>
-
-        <div className="flex flex-col gap-2  ">
-          <div>Afficher Relation :</div>
-          <div className="flex flex-col gap-1">
-            <div className="text-xl text-blue-600">synonyme</div>
-            {synonym != "" &&
-              synonym.map((e, index) => <div key={index}>{e[0]}</div>)}
-            <div className="text-xl text-blue-600">Meronyme</div>
-            {myronym != "" &&
-              myronym.map((e, index) => <div key={index}>{e[6]}</div>)}
-            <div className="text-xl text-blue-600">Accessibilite</div>
-            {accessibility != "" &&
-              accessibility.map((e, index) => <div key={index}>{e[8]}</div>)}
+            <input
+              onChange={(e) =>
+                setUpdata({ ...updata, notoriete_eng: e.target.value })
+              }
+              value={updata.notoriete_eng}
+              className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
+              type="text"
+            />
           </div>
         </div>
+        <div className="sm:w-[30%] w-full flex flex-col gap-3">
+          Mettre en relation de
+          <div className="flex items-center gap-2">
+            Synonymie{" "}
+            <input
+              className="cursor-pointer"
+              checked={check.synonymy}
+              onClick={() => setcheck({ ...check, synonymy: !check.synonymy })}
+              onChange={() => {}}
+              type="checkbox"
+              name=""
+              id=""
+            />{" "}
+          </div>
+          <div className="flex items-center gap-2">
+            Meronymie{" "}
+            <input
+              className="cursor-pointer"
+              checked={check.meronymy}
+              onChange={() => {}}
+              onClick={() => setcheck({ ...check, meronymy: !check.meronymy })}
+              type="checkbox"
+              name=""
+              id=""
+            />{" "}
+          </div>
+          <div className="flex items-center gap-2">
+            Accessibilite{" "}
+            <input
+              onChange={() => {}}
+              className="cursor-pointer"
+              checked={check.accessibility}
+              onClick={() =>
+                setcheck({ ...check, accessibility: !check.accessibility })
+              }
+              type="checkbox"
+              name=""
+              id=""
+            />{" "}
+          </div>
+          <div className="flex flex-col gap-1">
+            Avec le pivot
+            <input
+              value={check.newpivot}
+              onChange={(e) => setcheck({ ...check, newpivot: e.target.value })}
+              className="p-1 border rounded-md outline-none w-full "
+              type="text"
+            />
+          </div>
+          <button
+            className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
+            onClick={ajouter}
+          >
+            Ajouter relation(s)
+          </button>
+        </div>
       </div>
-      <div className="w-[30%] flex flex-col gap-3">
-        Mettre en relation de
-        <div className="flex items-center gap-2">
-          Synonymie{" "}
-          <input
-            className="cursor-pointer"
-            checked={check.synonymy}
-            onClick={() => setcheck({ ...check, synonymy: !check.synonymy })}
-            onChange={() => {}}
-            type="checkbox"
-            name=""
-            id=""
-          />{" "}
-        </div>
-        <div className="flex items-center gap-2">
-          Meronymie{" "}
-          <input
-            className="cursor-pointer"
-            checked={check.meronymy}
-            onChange={() => {}}
-            onClick={() => setcheck({ ...check, meronymy: !check.meronymy })}
-            type="checkbox"
-            name=""
-            id=""
-          />{" "}
-        </div>
-        <div className="flex items-center gap-2">
-          Accessibilite{" "}
-          <input
-            onChange={() => {}}
-            className="cursor-pointer"
-            checked={check.accessibility}
-            onClick={() =>
-              setcheck({ ...check, accessibility: !check.accessibility })
-            }
-            type="checkbox"
-            name=""
-            id=""
-          />{" "}
-        </div>
+
+      <div className="flex flex-col gap-2 mt-4 ">
+        <div>Afficher Relation :</div>
         <div className="flex flex-col gap-1">
-          Avec le pivot
-          <input
-            value={check.newpivot}
-            onChange={(e) => setcheck({ ...check, newpivot: e.target.value })}
-            className="p-1 border rounded-md outline-none"
-            type="text"
-          />
+          <div className="text-xl text-blue-600">synonyme</div>
+          {synonym != "" &&
+            synonym.map((e, index) => <div key={index}>{e[0]}</div>)}
+          <div className="text-xl text-blue-600">Meronyme</div>
+          {myronym != "" &&
+            myronym.map((e, index) => <div key={index}>{e[6]}</div>)}
+          <div className="text-xl text-blue-600">Accessibilite</div>
+          {accessibility != "" &&
+            accessibility.map((e, index) => <div key={index}>{e[8]}</div>)}
         </div>
-        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={ajouter}>Ajouter relation(s)</button>
       </div>
     </div>
   );

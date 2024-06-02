@@ -48,7 +48,7 @@ const Add = () => {
         Ajout fichier de noms propres
       </Link>
       <select
-        className="p-1 outline-none  w-[40%] rounded-md border"
+        className="p-1 outline-none  sm:w-[40%] w-full rounded-md border"
         value={lang}
         onChange={(e) => setLang(e.target.value)}
       >
@@ -57,7 +57,7 @@ const Add = () => {
         <option value="arb">Arabe</option>
       </select>
       {Object.keys(inputs).map((key) => (
-        <div className="flex flex-col gap-2 w-[40%]" key={key}>
+        <div className="flex flex-col gap-2 sm:w-[40%] w-full" key={key}>
           {/* <label htmlFor={key}>{key}:</label> */}
           <input
             className="border p-2 outline-none rounded-md"
@@ -71,7 +71,7 @@ const Add = () => {
         </div>
       ))}
       <button
-        className="bg-gradient-to-r from-blue-600 to-cyan-600 w-[50%] text-white font-bold rounded-md h-[5vh] max-w-max px-[10vh]"
+        className="bg-gradient-to-r from-blue-600 to-cyan-600 sm:w-[50%]  text-white font-bold rounded-md h-[5vh] sm:max-w-max px-[10vh] w-[100%]"
         onClick={addData}
       >
         add

@@ -66,74 +66,74 @@ const Prolexeme = () => {
         <option value="eng">Englais</option>
         <option value="arb">Arabe</option>
       </select>
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-2 items-center  sm:flex-row  flex-col">
         <div>Prolexeme :</div>
         <input
           value={inputs.prolexeme}
           onChange={(e) => setInputs({ ...inputs, prolexeme: e.target.value })}
-          className="p-1 border rounded-md outline-none"
+          className="p-1 border rounded-md outline-none sm:w-[40%] w-full"
           type="text"
         />
         <button
-          className="px-4 py-1 bg-orange-400 text-white font-bold"
+          className="px-4 py-1 bg-orange-400 text-white font-bold w-full sm:max-w-max"
           onClick={getprolexeme}
         >
           modifier
         </button>
         <button
-          className="px-4 py-1 bg-red-700 text-white font-bold"
+          className="px-4 py-1 bg-red-700 text-white font-bold w-full sm:max-w-max"
           onClick={deleteprolexeme}
         >
           delete
         </button>
       </div>
 
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
         <div>Num pivot : </div>
         <input
           value={updata.num_pivot}
           onChange={(e) => setUpdata({ ...updata, num_pivot: e.target.value })}
-          className="p-1 border rounded-md outline-none"
+          className="p-1 border rounded-md outline-none sm:w-[40%] w-full"
           type="text"
         />
       </div>
 
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
         <div>Type :</div>
         <input
           value={updata.type}
           onChange={(e) => setUpdata({ ...updata, type: e.target.value })}
-          className="p-1 border rounded-md outline-none"
+          className="p-1 border rounded-md outline-none sm:w-[40%] w-full"
           type="text"
         />
       </div>
 
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
         <div>Existance :</div>
         <input
           value={updata.existance}
           onChange={(e) => setUpdata({ ...updata, existance: e.target.value })}
-          className="p-1 border rounded-md outline-none"
+          className="p-1 border rounded-md outline-none sm:w-[40%] w-full"
           type="text"
         />
       </div>
 
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
         <div>Notoriete :</div>
         <input
           value={updata.notoriete}
           onChange={(e) => setUpdata({ ...updata, notoriete: e.target.value })}
-          className="p-1 border rounded-md outline-none"
+          className="p-1 border rounded-md outline-none sm:w-[40%] w-full"
           type="text"
         />
       </div>
 
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
         <div>Source :</div>
         <input
           value={updata.source}
           onChange={(e) => setUpdata({ ...updata, source: e.target.value })}
-          className="p-1 border rounded-md outline-none"
+          className="p-1 border rounded-md outline-none sm:w-[40%] w-full"
           type="text"
         />
       </div>

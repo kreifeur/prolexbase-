@@ -23,8 +23,8 @@ const AdvancedSearch = () => {
     fetchdata();
   };
   return (
-    <div className="flex h-[90vh]">
-      <div className="flex-[2] flex flex-col items-center  p-4 gap-8 border-r">
+    <div className="flex h-[90vh] flex-col sm:flex-row">
+      <div className="flex-[2] flex flex-col items-center  p-4 gap-8 sm:border-r border-b">
         <div className="w-full">
           <div className="mb-1 p-1 font-bold">
             Choisir la langue de recherche
@@ -73,7 +73,7 @@ const AdvancedSearch = () => {
         ) : (
           <div className="flex flex-col gap-[10vh] items-center justify-center h-full">
             <div className="text-3xl font-bold text-blue-500">Prolexbase</div>
-            <div className="w-[80%] flex items-center h-[6vh]">
+            <div className="sm:w-[80%] w-full flex items-center h-[6vh]">
               <div className="h-full w-[10%] flex items-center justify-center border border-blue-500 bg-blue-500 cursor-pointer">
                 <IoSearch onClick={send} className=" text-xl text-white" />
               </div>
@@ -82,27 +82,27 @@ const AdvancedSearch = () => {
                 onChange={(e) =>
                   setInputs({ ...inputs, middle: e.target.value })
                 }
-                className="border border-blue-500 w-[90%]  h-full outline-none px-3"
+                className="border border-blue-500 w-[90%]   h-full outline-none px-3"
                 placeholder="Nom à rechercher"
                 type="text"
               />
             </div>
 
-            <div className="flex items-center justify-between w-[70%]">
-              <div className="flex flex-col gap-3 items-center">
-                <div className="px-3 py-1 border rounded-md">un pays</div>
+            <div className="flex items-center justify-between sm:w-[70%] w-[100%]">
+              <div className="flex flex-col gap-3 items-center h-full justify-between ">
+                <div className="px-3 py-1 border rounded-md ">un pays</div>
                 <img src={pays} alt="" />
                 <div className="text-xl text-blue-500 ">France</div>
               </div>
 
-              <div className="flex flex-col gap-3 items-center">
-                <div className="px-3 py-1 border rounded-md">un nom</div>
+              <div className="flex flex-col gap-3 items-center h-full justify-between ">
+                <div className="px-3 py-1 border rounded-md ">un nom</div>
                 <img src={nom} alt="" />
                 <div className="text-xl text-blue-500 ">Ninou</div>
               </div>
 
-              <div className="flex flex-col gap-3 items-center">
-                <div className="px-3 py-1 border rounded-md">un prénom</div>
+              <div className="flex flex-col gap-3 items-center h-full justify-between">
+                <div className="px-3 py-1 border rounded-md ">un prénom</div>
                 <img src={prenom} alt="" />
                 <div className="text-xl text-blue-500 ">Adel</div>
               </div>

@@ -22,7 +22,7 @@ const TopNot = () => {
   };
 
   return (
-    <div className="flex h-[90vh]">
+    <div className="flex h-[90vh] sm:flex-row flex-col">
       <div className="flex flex-col flex-[2] p-4 gap-8 border-r">
         <div className="w-[100%] ">
           <div className="mb-1 p- font-bold">
