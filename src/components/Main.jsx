@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BiLinkExternal } from "react-icons/bi";
 import {
+  ResponsiveContainer,
   Area,
   AreaChart,
   CartesianGrid,
@@ -80,9 +81,9 @@ const Main = () => {
       </div>
 
       {/* Main window */}
-      <div className="flex-[7] p-4">
+      <div className="flex-[7] p-4 w-full">
         {data ? (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 w-full ">
             {" "}
             <div className="font-bold text-xl px-[5vh] py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white max-w-max rounded-md">
               {data[1]}
@@ -116,29 +117,50 @@ const Main = () => {
               <div>
                 SYNONYMY :
                 <div>
-                  {synonymy.map((e,index) => {
-                    return <div key={index}  className="text-black font-normal">{e}</div>;
+                  {synonymy.map((e, index) => {
+                    return (
+                      <div key={index} className="text-black font-normal">
+                        {e}
+                      </div>
+                    );
                   })}
                 </div>
               </div>
 
-              <div className="cursor-pointer text-right" onClick={() => setMore(!more)}>
-                {more ? 'hide' : 'see more'}
+              <div
+                className="cursor-pointer text-right"
+                onClick={() => setMore(!more)}
+              >
+                {more ? "hide" : "see more"}
               </div>
 
-              <div className={`${more == false ? "hidden" : "flex flex-col gap-2"}`}>
+              <div
+                className={`${
+                  more == false ? "hidden" : "flex flex-col gap-2"
+                }`}
+              >
                 <div>meronymy :</div>
                 <div>
-                  {meronymy && meronymy.map((e,index) => {
-                    return <div key={index} className=" text-black font-normal">{e}</div>;
-                  })}
+                  {meronymy &&
+                    meronymy.map((e, index) => {
+                      return (
+                        <div key={index} className=" text-black font-normal">
+                          {e}
+                        </div>
+                      );
+                    })}
                 </div>
 
                 <div>accessibility :</div>
                 <div>
-                  {accessibility && accessibility.map((e,index) => {
-                    return <div key={index} className="text-black  font-normal">{e}</div>;
-                  })}
+                  {accessibility &&
+                    accessibility.map((e, index) => {
+                      return (
+                        <div key={index} className="text-black  font-normal">
+                          {e}
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -151,31 +173,31 @@ const Main = () => {
                 ))
               : null} */}
             {/* graph area  */}
-            <div className="my-10">
-              <AreaChart
-                width={730}
-                height={250}
-                data={noto}
-                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-              >
-                <defs>
-                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#2563eb" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#0891b2" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="year" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Area
-                  type="monotone"
-                  dataKey="noto"
-                  stroke="#8884d8"
-                  fillOpacity={1}
-                  fill="url(#colorUv)"
-                />
-              </AreaChart>
+            <div className="my-10  w-full ">
+              <ResponsiveContainer width="100%" height={200}>
+                <AreaChart
+                  data={noto}
+                  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                >
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#2563eb" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#0891b2" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip />
+                  <Area
+                    type="monotone"
+                    dataKey="noto"
+                    stroke="#8884d8"
+                    fillOpacity={1}
+                    fill="url(#colorUv)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
           </div>
         ) : (
