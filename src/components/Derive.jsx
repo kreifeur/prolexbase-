@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import data_json from "../translate.json";
 
 const derive = () => {
   const [derive, setderive] = useState([]);
@@ -13,7 +14,8 @@ const derive = () => {
       id_derive: "",
       derive: "",
     });
-    const res = await axios.post("http://127.0.0.1:5000/getderive", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/getderive", {
+      token: localStorage.token,
       prolexeme: prolexeme,
       langue: langue,
     });
@@ -21,32 +23,34 @@ const derive = () => {
   };
 
   const ajouter = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/ajouterderive", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/ajouterderive", {
+      token: localStorage.token,
       ...updata,
       prolexeme: prolexeme,
       langue: langue,
     });
-    
+
     modifier();
   };
 
   const update = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/modifierderive", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/modifierderive", {
+      token: localStorage.token,
       id_derive: item[6],
       derive: item[7],
       prolexeme: prolexeme,
       langue: langue,
     });
-    
   };
 
   const deletederive = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/deletederive", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/deletederive", {
+      token: localStorage.token,
       id_derive: item[6],
       derive: item[7],
       langue: langue,
     });
-    
+
     modifier();
   };
 
@@ -75,7 +79,15 @@ const derive = () => {
       </div>
       <div className="flex flex-col gap-4  ">
         <div>derive :</div>
-        <button  className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={modifier}>modifier</button>
+        <button
+          className="px-2 py-1 bg-blue-500 text-white font-bold"
+          onClick={modifier}
+        >
+           {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "modifier"
+                    ]}
+        </button>
         <input
           className="border py-1 px-4 "
           value={updata.derive}
@@ -84,7 +96,15 @@ const derive = () => {
           name=""
           id=""
         />
-        <button  className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={ajouter}>ajouter</button>
+        <button
+          className="px-2 py-1 bg-blue-500 text-white font-bold"
+          onClick={ajouter}
+        >
+           {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "ajouter"
+                    ]}
+        </button>
 
         {derive.map((item, index) => {
           return (
@@ -103,8 +123,25 @@ const derive = () => {
                 className="p-1 border rounded-md outline-none"
               ></input>
               <div className="flex items-center gap-5">
-                <button  className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => update(item)}>update</button>
-                <button  className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => deletederive(item)}>delete</button>
+                <button
+                  className="px-2 py-1 bg-blue-500 text-white font-bold"
+                  onClick={() => update(item)}
+                >
+                  {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "modifier"
+                    ]}
+                </button>
+
+                <button
+                  className="px-2 py-1 bg-blue-500 text-white font-bold"
+                  onClick={() => deletederive(item)}
+                >
+                   {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "supprimer"
+                    ]}
+                </button>
               </div>
             </div>
           );

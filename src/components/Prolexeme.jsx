@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import data_json from '../translate.json'
 
 const Prolexeme = () => {
   const [inputs, setInputs] = useState({
@@ -78,13 +79,15 @@ const Prolexeme = () => {
           className="px-4 py-1 bg-orange-400 text-white font-bold w-full sm:max-w-max"
           onClick={getprolexeme}
         >
-          modifier
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["modifier"]}
         </button>
         <button
           className="px-4 py-1 bg-red-700 text-white font-bold w-full sm:max-w-max"
           onClick={deleteprolexeme}
         >
-          delete
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["supprimer"]}
         </button>
       </div>
 
@@ -139,12 +142,14 @@ const Prolexeme = () => {
       </div>
 
       <div>
-        <div>Prolexeme dans d'autres langues</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Prolexeme dans d'autres langues"]}</div>
         <div>{updata.prolexeme_1}</div>
         <div>{updata.prolexeme_2}</div>
       </div>
 
-      <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={updateit}>update it</button>
+      <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={updateit}>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["modifier"]}</button>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
+import data_json from '../translate.json'
 
 const Add = () => {
   const [lang, setLang] = useState(localStorage.lan);
@@ -45,7 +46,9 @@ const Add = () => {
         to={"/file"}
         className="bg-blue-500 font-bold text-white py-1 px-4"
       >
-        Ajout fichier de noms propres
+        
+        {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Ajout fichier de noms propres"]}
       </Link>
       <select
         className="p-1 outline-none  sm:w-[40%] w-full rounded-md border"
@@ -74,7 +77,8 @@ const Add = () => {
         className="bg-gradient-to-r from-blue-600 to-cyan-600 sm:w-[50%]  text-white font-bold rounded-md h-[5vh] sm:max-w-max px-[10vh] w-[100%]"
         onClick={addData}
       >
-        add
+        {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["ajouter"]}
       </button>
     </div>
   );

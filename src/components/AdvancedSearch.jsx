@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import pays from "../assets/pays.jpg";
 import nom from "../assets/nom.jpg";
 import prenom from "../assets/prenom.jpg";
+import data_json from '../translate.json'
 
 const AdvancedSearch = () => {
   const [data, setData] = useState();
@@ -27,7 +28,8 @@ const AdvancedSearch = () => {
       <div className="flex-[2] flex flex-col items-center  p-4 gap-8 sm:border-r border-b">
         <div className="w-full">
           <div className="mb-1 p-1 font-bold">
-            Choisir la langue de recherche
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Choisir la langue de recherche"]}
           </div>
           <select
             className="p-1 outline-none w-[100%] rounded-md border"
@@ -61,8 +63,8 @@ const AdvancedSearch = () => {
           className=" rounded-md p-2 w-full text-white tracking-widest font-bold bg-gradient-to-r from-blue-600 to-cyan-600"
           onClick={send}
         >
-          {" "}
-          Recherche
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["recherche"]}
         </button>
       </div>
       <div className="flex-[7] p-4">
@@ -72,7 +74,8 @@ const AdvancedSearch = () => {
           })
         ) : (
           <div className="flex flex-col gap-[10vh] items-center justify-center h-full">
-            <div className="text-3xl font-bold text-blue-500">Prolexbase</div>
+            <div className="text-3xl font-bold text-blue-500">{localStorage.getItem("lan") &&
+                  data_json[localStorage.getItem("lan")]["Prolexbase"]}</div>
             <div className="sm:w-[80%] w-full flex items-center h-[6vh]">
               <div className="h-full w-[10%] flex items-center justify-center border border-blue-500 bg-blue-500 cursor-pointer">
                 <IoSearch onClick={send} className=" text-xl text-white" />

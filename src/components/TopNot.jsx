@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
+import data_json from '../translate.json'
 
 const TopNot = () => {
   const [lang, setLang] = useState(localStorage.lan);
@@ -26,7 +27,8 @@ const TopNot = () => {
       <div className="flex flex-col flex-[2] p-4 gap-8 border-r">
         <div className="w-[100%] ">
           <div className="mb-1 p- font-bold">
-            Choisir la langue de recherche
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Choisir la langue de recherche"]}
           </div>
 
           <select
@@ -93,8 +95,10 @@ const TopNot = () => {
           })
         ) : (
           <div className="flex flex-col gap-8 items-center justify-center h-full">
-            <div className="text-3xl font-bold text-blue-500">Prolexbase</div>
-            <div className="text-xl font-bold text-blue-500">Top Célébrité</div>
+            <div className="text-3xl font-bold text-blue-500">{localStorage.getItem("lan") &&
+                  data_json[localStorage.getItem("lan")]["Prolexbase"]}</div>
+            <div className="text-xl font-bold text-blue-500">{localStorage.getItem("lan") &&
+                  data_json[localStorage.getItem("lan")]["Top Célébrité"]}</div>
 
             <div className="flex items-center justify-between w-[70%]">
               <div className="flex flex-col gap-3 items-center h-full">

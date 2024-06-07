@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FaPaperclip } from "react-icons/fa6";
+import data_json from '../translate.json'
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);

@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import pays from "../assets/pays.jpg";
 import nom from "../assets/nom.jpg";
 import prenom from "../assets/prenom.jpg";
+import data_json from "../translate.json";
 const Main = () => {
   const [more, setMore] = useState(false);
   const [inputs, setInputs] = useState({
@@ -46,7 +47,10 @@ const Main = () => {
       <div className="flex-[2] flex flex-col items-center  p-4 gap-8 sm:border-r border-b">
         <div className="w-[90%]">
           <div className="mb-1 p-1 font-bold">
-            Choisir la langue de recherche
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "Choisir la langue de recherche"
+              ]}
           </div>
           <select
             className="p-1 outline-none w-full border rounded-md"
@@ -61,7 +65,10 @@ const Main = () => {
 
         <div className=" w-[90%]">
           <div className="mb-1 p-1 font-bold">
-            Entrer le nom propre à rechercher{" "}
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "Entrer le nom propre à rechercher"
+              ]}
           </div>
           <input
             onChange={(e) => setInputs({ ...inputs, word: e.target.value })}
@@ -75,7 +82,8 @@ const Main = () => {
             onClick={send}
             className=" rounded-md p-2 w-full text-white tracking-widest font-bold bg-gradient-to-r from-blue-600 to-cyan-600"
           >
-            Recherche
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["recherche"]}
           </button>
         </div>
       </div>
@@ -202,7 +210,10 @@ const Main = () => {
           </div>
         ) : (
           <div className="flex flex-col gap-[10vh] items-center justify-center h-full">
-            <div className="text-3xl font-bold text-blue-500">Prolexbase</div>
+            <div className="text-3xl font-bold text-blue-500">
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["Prolexbase"]}
+            </div>
             <div className="sm:w-[80%] w-[100%] flex items-center h-[6vh]">
               <div className="h-full w-[10%] sm:w-[5%] flex items-center justify-center border border-blue-500 bg-blue-500 cursor-pointer">
                 <IoSearch onClick={send} className=" text-xl text-white" />
@@ -219,7 +230,8 @@ const Main = () => {
                 className="h-full w-[40%] sm:w-[25%] flex items-center justify-center border border-blue-500 bg-blue-500 text-white gap-2"
               >
                 <FaSearchPlus className=" text-md " />
-                Recherche avancé
+                {localStorage.getItem("lan") &&
+                  data_json[localStorage.getItem("lan")]["recherche avancé"]}
               </Link>
             </div>
 

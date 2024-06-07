@@ -10,19 +10,19 @@ import { useNavigate } from "react-router-dom";
 const Bienvenue = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-center min-h-[90vh] flex-col gap-[5vh] p-4">
-      <div className="mt-5 text-4xl font-extrabold leading-[1.15] text-black sm:text-5xl text-center ">
+    <div className="flex items-center justify-between min-h-[90vh] flex-col  p-4">
+      <div className=" text-4xl font-extrabold leading-[1.15] text-black sm:text-4xl text-center ">
         {localStorage.getItem("lan") &&
           data[localStorage.getItem("lan")][
             "Bienvenus sur le Dictionnaire de noms propres"
           ]}
       </div>
       <div className="flex items-center gap-5 flex-col w-full px-4">
-        <div className="tracking-wider bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent sm:text-7xl text-5xl font-extrabold w-full text-center">
+        <div className="tracking-wider bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent sm:text-7xl text-5xl font-extrabold w-full text-center p-6">
           {localStorage.getItem("lan") &&
             data[localStorage.getItem("lan")]["Prolexbase"]}
         </div>
-        <div className="flex sm:gap-[50vh] gap-4">
+        <div className="flex sm:gap-[50vh] gap-4  ">
           <div>
             <img src={francois} />
           </div>
@@ -43,25 +43,25 @@ const Bienvenue = () => {
         <img
           onClick={() => {
             localStorage.setItem("lan", "eng");
-            navigate("/");
+            window.location.reload();
           }}
-          className="cursor-pointer h-[100px] w-[200px]"
+          className="cursor-pointer h-[70px] w-[200px]"
           src={anglais}
         />
         <img
           onClick={() => {
             localStorage.setItem("lan", "fra");
-            navigate("/");
+            window.location.reload();
           }}
-          className="cursor-pointer h-[100px] w-[200px]"
+          className="cursor-pointer h-[70px] w-[200px]"
           src={francais}
         />
         <img
           onClick={() => {
             localStorage.setItem("lan", "arb");
-            navigate("/");
+            window.location.reload();
           }}
-          className="cursor-pointer h-[100px] w-[200px]"
+          className="cursor-pointer h-[70px] w-[200px]"
           src={arabe}
         />
       </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import data_json from '../translate.json'
 
 const Alias = () => {
   const [alias, setAlias] = useState([]);
@@ -77,7 +78,10 @@ const Alias = () => {
       
       <div className="flex flex-col gap-4  ">
         <div>Alias :</div>
-        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={modifier}>modifier</button>
+        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={modifier}> {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "modifier"
+                    ]}</button>
         <input
           className="border py-1 px-4 "
           value={updata.alias}
@@ -86,7 +90,10 @@ const Alias = () => {
           name=""
           id=""
         />
-        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={ajouter}>ajouter</button>
+        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={ajouter}> {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "ajouter"
+                    ]}</button>
 
         {alias.map((item, index) => {
           return (
@@ -105,8 +112,14 @@ const Alias = () => {
                 className="p-1 border rounded-md outline-none"
               ></input>
               <div className="flex items-center gap-5">
-                <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => update(item)}>update</button>
-                <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => deletealias(item)}>delete</button>
+                <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => update(item)}> {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "modifier"
+                    ]}</button>
+                <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => deletealias(item)}> {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "supprimer"
+                    ]}</button>
               </div>
             </div>
           );

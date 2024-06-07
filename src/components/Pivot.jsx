@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import data_json from "../translate.json";
 
 const Pivot = () => {
   const [langue, setLangue] = useState(localStorage.lan);
@@ -116,23 +117,28 @@ const Pivot = () => {
               className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
               type="text"
             />
+
             <button
-              className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
-              onClick={addpivot}
-            >
-              ajouter
-            </button>
-            <button
-              className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
+              className="px-2 py-1 bg-blue-500 text-white font-bold w-full sm:w-[150px]"
               onClick={modifier}
             >
-              modifier
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["recherche"]}
             </button>
             <button
-              className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
+              className="px-2 py-1 bg-blue-500 text-white font-bold w-full sm:w-[150px]"
+              onClick={addpivot}
+            >
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["ajouter"]}
+            </button>
+
+            <button
+              className="px-2 py-1 bg-blue-500 text-white font-bold w-full sm:w-[150px]"
               onClick={updatepivot}
             >
-              update
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["modifier"]}
             </button>
           </div>
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
@@ -241,7 +247,9 @@ const Pivot = () => {
           </div>
         </div>
         <div className="sm:w-[30%] w-full flex flex-col gap-3">
-          Mettre en relation de
+          
+          {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["Mettre en relation de"]}
           <div className="flex items-center gap-2">
             Synonymie{" "}
             <input
@@ -293,7 +301,9 @@ const Pivot = () => {
             className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
             onClick={ajouter}
           >
-            Ajouter relation(s)
+            
+            {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["Ajouter relation(s)"]}
           </button>
         </div>
       </div>
