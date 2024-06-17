@@ -135,15 +135,15 @@ const TopNot = () => {
 
             <div className="flex items-center justify-between w-[70%]">
               <div className="flex flex-col gap-3 items-center h-full">
-                <img className="h-full" src={img1} alt="" />
+                <img className="h-[100px]" src={img1} alt="" />
               </div>
 
               <div className="flex flex-col gap-3 items-center h-full">
-                <img className="h-full" src={img2} alt="" />
+                <img className="h-[100px]" src={img2} alt="" />
               </div>
 
               <div className="flex flex-col gap-3 items-center h-full">
-                <img className="h-full" src={img3} alt="" />
+                <img className="h-[100px]" src={img3} alt="" />
               </div>
             </div>
           </div>
