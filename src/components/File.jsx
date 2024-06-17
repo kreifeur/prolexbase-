@@ -33,14 +33,20 @@ const FileUpload = () => {
   return (
     <div>
       <div className="flex gap-4 p-4"> 
-        <button className="border px-2 py-1 bg-blue-500 text-white flex gap-2 items-center " onClick={handlefile}> <FaPaperclip /> upload file</button>
+        <button className="border px-2 py-1 bg-blue-500 text-white flex gap-2 items-center " onClick={handlefile}> <FaPaperclip /> {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "upload file"
+              ]}</button>
         <input
           className="hidden"
           id="inp"
           type="file"
           onChange={handleFileChange}
         />
-        <button className="border px-2 py-1 bg-orange-500 text-white" onClick={handleUpload}>Add top Database</button>
+        <button className="border px-2 py-1 bg-orange-500 text-white" onClick={handleUpload}>{localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "Add top Database"
+              ]}</button>
       </div>
     </div>
   );

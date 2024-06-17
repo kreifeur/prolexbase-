@@ -59,7 +59,7 @@ const Prolexeme = () => {
   return (
     <div className="flex flex-col gap-3">
       <select
-        className="p-1 outline-none  border rounded-md"
+        className="p-1 outline-none  border rounded-md sm:w-[300px]"
         value={inputs.langue}
         onChange={(e) => setInputs({ ...inputs, langue: e.target.value })}
       >
@@ -68,7 +68,8 @@ const Prolexeme = () => {
         <option value="arb">Arabe</option>
       </select>
       <div className="flex gap-2 items-center  sm:flex-row  flex-col">
-        <div>Prolexeme :</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["prolexeme"]} :</div>
         <input
           value={inputs.prolexeme}
           onChange={(e) => setInputs({ ...inputs, prolexeme: e.target.value })}
@@ -76,14 +77,14 @@ const Prolexeme = () => {
           type="text"
         />
         <button
-          className="px-4 py-1 bg-orange-400 text-white font-bold w-full sm:max-w-max"
+          className="px-4 py-1 bg-orange-400 text-white font-bold w-full sm:max-w-max rounded-sm"
           onClick={getprolexeme}
         >
           {localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["modifier"]}
+            data_json[localStorage.getItem("lan")]["afficher"]}
         </button>
         <button
-          className="px-4 py-1 bg-red-700 text-white font-bold w-full sm:max-w-max"
+          className="px-4 py-1 bg-red-700 text-white font-bold w-full sm:max-w-max rounded-sm"
           onClick={deleteprolexeme}
         >
           {localStorage.getItem("lan") &&
@@ -92,7 +93,8 @@ const Prolexeme = () => {
       </div>
 
       <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
-        <div>Num pivot : </div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["num pivot"]} : </div>
         <input
           value={updata.num_pivot}
           onChange={(e) => setUpdata({ ...updata, num_pivot: e.target.value })}
@@ -102,7 +104,8 @@ const Prolexeme = () => {
       </div>
 
       <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
-        <div>Type :</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["type"]} :</div>
         <input
           value={updata.type}
           onChange={(e) => setUpdata({ ...updata, type: e.target.value })}
@@ -112,7 +115,8 @@ const Prolexeme = () => {
       </div>
 
       <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
-        <div>Existance :</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["existence"]} :</div>
         <input
           value={updata.existance}
           onChange={(e) => setUpdata({ ...updata, existance: e.target.value })}
@@ -122,7 +126,8 @@ const Prolexeme = () => {
       </div>
 
       <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
-        <div>Notoriete :</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["notoriété"]} :</div>
         <input
           value={updata.notoriete}
           onChange={(e) => setUpdata({ ...updata, notoriete: e.target.value })}
@@ -132,7 +137,8 @@ const Prolexeme = () => {
       </div>
 
       <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
-        <div>Source :</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Source"]} :</div>
         <input
           value={updata.source}
           onChange={(e) => setUpdata({ ...updata, source: e.target.value })}
@@ -148,7 +154,7 @@ const Prolexeme = () => {
         <div>{updata.prolexeme_2}</div>
       </div>
 
-      <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={updateit}>{localStorage.getItem("lan") &&
+      <button className="px-8 py-1 bg-blue-500 text-white font-bold sm:max-w-max rounded-sm" onClick={updateit}>{localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["modifier"]}</button>
     </div>
   );

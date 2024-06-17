@@ -21,7 +21,7 @@ const App = () => {
     return currentUser ? children : <Navigate to={"/"} />;
   };
   return (
-    <div className="w-[100%] h-[100vh]  text-sm ">
+    <div className="w-[100%] min-h-[100vh]  text-sm ">
       <BrowserRouter>
         <Navbar />
         <Routes>

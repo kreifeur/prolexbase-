@@ -100,7 +100,7 @@ const Pivot = () => {
       <div className="flex flex-col sm:flex-row gap-10 ">
         <div className="sm:w-[70%] w-full flex flex-col gap-3">
           <select
-            className="p-1 outline-none  border rounded-md  w-full"
+            className="p-1 outline-none  border rounded-md  w-full sm:w-[300px]"
             value={langue}
             onChange={(e) => setLangue(e.target.value)}
           >
@@ -110,7 +110,11 @@ const Pivot = () => {
           </select>
 
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
-            <div>Num pivot :</div>
+            <div>
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["num pivot"]}{" "}
+              :
+            </div>
             <input
               value={numpivot}
               onChange={(e) => setNumpivot(e.target.value)}
@@ -142,7 +146,11 @@ const Pivot = () => {
             </button>
           </div>
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
-            <div>Prolexeme :</div>
+            <div>
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["prolexeme"]}{" "}
+              :
+            </div>
             <input
               onChange={(e) =>
                 setUpdata({ ...updata, prolexeme_fra: e.target.value })
@@ -169,7 +177,11 @@ const Pivot = () => {
             />
           </div>
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
-            <div>Source :</div>
+            <div>
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["Source"]}{" "}
+              :
+            </div>
             <input
               onChange={(e) =>
                 setUpdata({ ...updata, source_fra: e.target.value })
@@ -196,7 +208,11 @@ const Pivot = () => {
             />
           </div>
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
-            <div>Existence :</div>
+            <div>
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["existence"]}{" "}
+              :
+            </div>
             <input
               onChange={(e) =>
                 setUpdata({ ...updata, existance: e.target.value })
@@ -208,7 +224,11 @@ const Pivot = () => {
           </div>
 
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
-            <div>type :</div>
+            <div>
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["type"]}{" "}
+              :
+            </div>
             <input
               onChange={(e) => setUpdata({ ...updata, type: e.target.value })}
               value={updata.type}
@@ -217,7 +237,11 @@ const Pivot = () => {
             />
           </div>
           <div className="flex gap-2 items-center flex-col sm:flex-row ">
-            <div>Notoriete :</div>
+            <div>
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["notoriété"]}{" "}
+              :
+            </div>
             <input
               onChange={(e) =>
                 setUpdata({ ...updata, notoriete_fra: e.target.value })
@@ -247,11 +271,11 @@ const Pivot = () => {
           </div>
         </div>
         <div className="sm:w-[30%] w-full flex flex-col gap-3">
-          
           {localStorage.getItem("lan") &&
-                data_json[localStorage.getItem("lan")]["Mettre en relation de"]}
+            data_json[localStorage.getItem("lan")]["Mettre en relation de"]}
           <div className="flex items-center gap-2">
-            Synonymie{" "}
+          {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["synonymes"]}{" "}
             <input
               className="cursor-pointer"
               checked={check.synonymy}
@@ -263,7 +287,8 @@ const Pivot = () => {
             />{" "}
           </div>
           <div className="flex items-center gap-2">
-            Meronymie{" "}
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["meronymes"]}{" "}
             <input
               className="cursor-pointer"
               checked={check.meronymy}
@@ -275,7 +300,8 @@ const Pivot = () => {
             />{" "}
           </div>
           <div className="flex items-center gap-2">
-            Accessibilite{" "}
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["accessibilité"]}{" "}
             <input
               onChange={() => {}}
               className="cursor-pointer"
@@ -289,7 +315,9 @@ const Pivot = () => {
             />{" "}
           </div>
           <div className="flex flex-col gap-1">
-            Avec le pivot
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Avec le pivot"]}
+            
             <input
               value={check.newpivot}
               onChange={(e) => setcheck({ ...check, newpivot: e.target.value })}
@@ -301,23 +329,35 @@ const Pivot = () => {
             className="px-2 py-1 bg-blue-500 text-white font-bold w-full"
             onClick={ajouter}
           >
-            
             {localStorage.getItem("lan") &&
-                data_json[localStorage.getItem("lan")]["Ajouter relation(s)"]}
+              data_json[localStorage.getItem("lan")]["Ajouter relation(s)"]}
           </button>
         </div>
       </div>
 
       <div className="flex flex-col gap-2 mt-4 ">
-        <div>Afficher Relation :</div>
+        <div>
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Afficher Relation"]}{" "}
+          :
+        </div>
         <div className="flex flex-col gap-1">
-          <div className="text-xl text-blue-600">synonyme</div>
+          <div className="text-xl text-blue-600">
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["synonymes"]}
+          </div>
           {synonym != "" &&
             synonym.map((e, index) => <div key={index}>{e[0]}</div>)}
-          <div className="text-xl text-blue-600">Meronyme</div>
+          <div className="text-xl text-blue-600">
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["meronymes"]}
+          </div>
           {myronym != "" &&
             myronym.map((e, index) => <div key={index}>{e[6]}</div>)}
-          <div className="text-xl text-blue-600">Accessibilite</div>
+          <div className="text-xl text-blue-600">
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["accessibilité"]}
+          </div>
           {accessibility != "" &&
             accessibility.map((e, index) => <div key={index}>{e[8]}</div>)}
         </div>

@@ -57,7 +57,10 @@ const derive = () => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-2 items-center ">
-        <div>langue :</div>
+        <div>{localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "langue"
+                    ]} :</div>
         <select
           className="p-1 outline-none  border rounded-md"
           value={langue}
@@ -69,7 +72,10 @@ const derive = () => {
         </select>
       </div>
       <div className="flex gap-2 items-center ">
-        <div>Prolexeme :</div>
+        <div>{localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "prolexeme"
+                    ]}  :</div>
         <input
           value={prolexeme}
           onChange={(e) => setProlexeme(e.target.value)}
@@ -78,9 +84,12 @@ const derive = () => {
         />
       </div>
       <div className="flex flex-col gap-4  ">
-        <div>derive :</div>
+        <div>{localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")][
+                      "dérives"
+                    ]}  :</div>
         <button
-          className="px-2 py-1 bg-blue-500 text-white font-bold"
+          className="px-8 sm:max-w-max rounded-md py-1 bg-blue-500 text-white font-bold"
           onClick={modifier}
         >
            {localStorage.getItem("lan") &&
@@ -89,7 +98,7 @@ const derive = () => {
                     ]}
         </button>
         <input
-          className="border py-1 px-4 "
+          className="border py-1 px-4  sm:w-[300px]"
           value={updata.derive}
           onChange={(e) => setUpdata({ ...updata, derive: e.target.value })}
           type="text"
@@ -97,7 +106,7 @@ const derive = () => {
           id=""
         />
         <button
-          className="px-2 py-1 bg-blue-500 text-white font-bold"
+          className="px-8 sm:max-w-max rounded-md py-1 bg-blue-500 text-white font-bold"
           onClick={ajouter}
         >
            {localStorage.getItem("lan") &&
@@ -124,7 +133,7 @@ const derive = () => {
               ></input>
               <div className="flex items-center gap-5">
                 <button
-                  className="px-2 py-1 bg-blue-500 text-white font-bold"
+                  className="px-8 sm:max-w-max rounded-md py-1 bg-blue-500 text-white font-bold"
                   onClick={() => update(item)}
                 >
                   {localStorage.getItem("lan") &&
@@ -134,7 +143,7 @@ const derive = () => {
                 </button>
 
                 <button
-                  className="px-2 py-1 bg-blue-500 text-white font-bold"
+                  className="px-8 sm:max-w-max rounded-md py-1 bg-blue-500 text-white font-bold"
                   onClick={() => deletederive(item)}
                 >
                    {localStorage.getItem("lan") &&

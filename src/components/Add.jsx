@@ -44,12 +44,15 @@ const Add = () => {
     <div className="flex flex-col gap-4 p-4">
       <Link
         to={"/file"}
-        className="bg-blue-500 font-bold text-white py-1 px-4"
+        className="bg-blue-500 font-bold text-white py-2 px-4 sm:max-w-max rounded-md "
       >
         
         {localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["Ajout fichier de noms propres"]}
       </Link>
+
+      <h1 className="font-bold text-xl">{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["Ajout d'un nom propre"]}</h1>
       <select
         className="p-1 outline-none  sm:w-[40%] w-full rounded-md border"
         value={lang}
@@ -65,7 +68,10 @@ const Add = () => {
           <input
             className="border p-2 outline-none rounded-md"
             type="text"
-            placeholder={key}
+            placeholder= {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                key
+              ]}
             id={key}
             name={key}
             value={inputs[key]}

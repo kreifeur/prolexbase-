@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import data_json from '../translate.json'
+import data_json from "../translate.json";
 
 const Alias = () => {
   const [alias, setAlias] = useState([]);
-  const [langue,setLangue]=useState(localStorage.lan)
+  const [langue, setLangue] = useState(localStorage.lan);
   const [updata, setUpdata] = useState({
     alias: "",
   });
@@ -14,15 +14,17 @@ const Alias = () => {
       id_alias: "",
       alias: "",
     });
-    const res = await axios.post("http://127.0.0.1:5000/getalias", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/getalias", {
+      token: localStorage.token,
       prolexeme: prolexeme,
-      langue: langue
+      langue: langue,
     });
     setAlias(res.data.res);
   };
 
   const ajouter = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/ajouteralias", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/ajouteralias", {
+      token: localStorage.token,
       ...updata,
       langue: langue,
       prolexeme: prolexeme,
@@ -31,29 +33,34 @@ const Alias = () => {
   };
 
   const update = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/modifieralias", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/modifieralias", {
+      token: localStorage.token,
       langue: langue,
       id_alias: item[6],
       alias: item[7],
       prolexeme: prolexeme,
     });
-
   };
 
   const deletealias = async (item) => {
-    const res = await axios.post("http://127.0.0.1:5000/deletealias", {token:localStorage.token,
+    const res = await axios.post("http://127.0.0.1:5000/deletealias", {
+      token: localStorage.token,
       langue: langue,
       id_alias: item[6],
       alias: item[7],
     });
-    
+
     modifier();
   };
 
   return (
     <div className="flex flex-col gap-3">
       <div className="flex gap-2 items-center ">
-      <div>langue :</div>
+        <div>
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["langue"]}{" "}
+          :
+        </div>
         <select
           className="p-1 outline-none  border rounded-md"
           value={langue}
@@ -65,9 +72,9 @@ const Alias = () => {
         </select>
       </div>
 
-
       <div className="flex gap-2 items-center ">
-        <div>Prolexeme :</div>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["prolexeme"]} :</div>
         <input
           value={prolexeme}
           onChange={(e) => setProlexeme(e.target.value)}
@@ -75,25 +82,34 @@ const Alias = () => {
           type="text"
         />
       </div>
-      
+
       <div className="flex flex-col gap-4  ">
-        <div>Alias :</div>
-        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={modifier}> {localStorage.getItem("lan") &&
-                    data_json[localStorage.getItem("lan")][
-                      "modifier"
-                    ]}</button>
+        <div>{localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["alias"]} :</div>
+        <button
+          className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
+          onClick={modifier}
+        >
+          {" "}
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["modifier"]}
+        </button>
         <input
-          className="border py-1 px-4 "
+          className="border py-1 px-4  sm:w-[300px]"
           value={updata.alias}
           onChange={(e) => setUpdata({ ...updata, alias: e.target.value })}
           type="text"
           name=""
           id=""
         />
-        <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={ajouter}> {localStorage.getItem("lan") &&
-                    data_json[localStorage.getItem("lan")][
-                      "ajouter"
-                    ]}</button>
+        <button
+          className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
+          onClick={ajouter}
+        >
+          {" "}
+          {localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["ajouter"]}
+        </button>
 
         {alias.map((item, index) => {
           return (
@@ -112,14 +128,22 @@ const Alias = () => {
                 className="p-1 border rounded-md outline-none"
               ></input>
               <div className="flex items-center gap-5">
-                <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => update(item)}> {localStorage.getItem("lan") &&
-                    data_json[localStorage.getItem("lan")][
-                      "modifier"
-                    ]}</button>
-                <button className="px-2 py-1 bg-blue-500 text-white font-bold" onClick={() => deletealias(item)}> {localStorage.getItem("lan") &&
-                    data_json[localStorage.getItem("lan")][
-                      "supprimer"
-                    ]}</button>
+                <button
+                  className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
+                  onClick={() => update(item)}
+                >
+                  {" "}
+                  {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")]["modifier"]}
+                </button>
+                <button
+                  className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
+                  onClick={() => deletealias(item)}
+                >
+                  {" "}
+                  {localStorage.getItem("lan") &&
+                    data_json[localStorage.getItem("lan")]["supprimer"]}
+                </button>
               </div>
             </div>
           );

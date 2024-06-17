@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
-import data_json from '../translate.json'
+import data_json from "../translate.json";
 
 const TopNot = () => {
   const [lang, setLang] = useState(localStorage.lan);
@@ -21,14 +21,20 @@ const TopNot = () => {
     });
     setResp(data.data.results);
   };
+  const handleKeyUp = (event) => {
+    if (event.key === "Enter") {
+      search();
+    }}
 
   return (
-    <div className="flex h-[90vh] sm:flex-row flex-col">
+    <div className="flex min-h-[90vh] sm:flex-row flex-col">
       <div className="flex flex-col flex-[2] p-4 gap-8 border-r">
         <div className="w-[100%] ">
           <div className="mb-1 p- font-bold">
-          {localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["Choisir la langue de recherche"]}
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "Choisir la langue de recherche"
+              ]}
           </div>
 
           <select
@@ -45,28 +51,48 @@ const TopNot = () => {
         <div className="w-[100%]">
           <input
             className="px-4 py-2 outline-none border w-full rounded-md"
-            placeholder="type"
+            placeholder={localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "type"
+              ]}
             type="text"
             value={type}
             onChange={(e) => setType(e.target.value)}
+            onKeyUp={handleKeyUp}
           />
         </div>
+
         <div className="w-[100%]">
-          <input
+          <select
             className="px-4 py-2 outline-none border w-full rounded-md"
             placeholder="year"
-            type="text"
             value={year}
             onChange={(e) => setYear(e.target.value)}
-          />
+            onKeyUp={handleKeyUp}
+          >
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
         </div>
+
         <div className="w-[100%]">
           <input
             className="px-4 py-2 outline-none border w-full rounded-md"
-            placeholder="limit"
+            
+            placeholder={localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "nombre des celebrite a afficher"
+              ]}
             type="text"
             value={limit}
             onChange={(e) => setLimit(e.target.value)}
+            onKeyUp={handleKeyUp}
           />
         </div>
 
@@ -74,7 +100,10 @@ const TopNot = () => {
           onClick={search}
           className=" rounded-md p-2 w-full text-white tracking-widest font-bold bg-gradient-to-r from-blue-600 to-cyan-600"
         >
-          Recherche
+          {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "recherche"
+              ]}
         </button>
       </div>
 
@@ -95,10 +124,14 @@ const TopNot = () => {
           })
         ) : (
           <div className="flex flex-col gap-8 items-center justify-center h-full">
-            <div className="text-3xl font-bold text-blue-500">{localStorage.getItem("lan") &&
-                  data_json[localStorage.getItem("lan")]["Prolexbase"]}</div>
-            <div className="text-xl font-bold text-blue-500">{localStorage.getItem("lan") &&
-                  data_json[localStorage.getItem("lan")]["Top Célébrité"]}</div>
+            <div className="text-3xl font-bold text-blue-500">
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["Prolexbase"]}
+            </div>
+            <div className="text-xl font-bold text-blue-500">
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")]["Top Célébrité"]}
+            </div>
 
             <div className="flex items-center justify-between w-[70%]">
               <div className="flex flex-col gap-3 items-center h-full">

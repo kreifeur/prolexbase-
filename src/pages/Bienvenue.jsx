@@ -40,30 +40,39 @@ const Bienvenue = () => {
       </div>
       <div className="flex items-center gap-[10vh] sm:flex-row flex-col min-h-[1vh]">
         {" "}
-        <img
-          onClick={() => {
-            localStorage.setItem("lan", "eng");
-            window.location.reload();
-          }}
-          className="cursor-pointer h-[70px] w-[200px]"
-          src={anglais}
-        />
-        <img
-          onClick={() => {
-            localStorage.setItem("lan", "fra");
-            window.location.reload();
-          }}
-          className="cursor-pointer h-[70px] w-[200px]"
-          src={francais}
-        />
-        <img
-          onClick={() => {
-            localStorage.setItem("lan", "arb");
-            window.location.reload();
-          }}
-          className="cursor-pointer h-[70px] w-[200px]"
-          src={arabe}
-        />
+        <div className="flex flex-col items-center">
+          <p className="font-bold">English</p>
+          <img
+            onClick={() => {
+              localStorage.setItem("lan", "eng");
+              window.location.reload();
+            }}
+            className="cursor-pointer h-[70px] w-[200px]"
+            src={anglais}
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          <p className="font-bold">Francais</p>
+          <img
+            onClick={() => {
+              localStorage.setItem("lan", "fra");
+              window.location.reload();
+            }}
+            className="cursor-pointer h-[70px] w-[200px]"
+            src={francais}
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          <p className="font-bold">العربية</p>
+          <img
+            onClick={() => {
+              localStorage.setItem("lan", "arb");
+              window.location.reload();
+            }}
+            className="cursor-pointer h-[70px] w-[200px]"
+            src={arabe}
+          />
+        </div>
       </div>
     </div>
   );

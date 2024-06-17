@@ -17,6 +17,7 @@ import pays from "../assets/pays.jpg";
 import nom from "../assets/nom.jpg";
 import prenom from "../assets/prenom.jpg";
 import data_json from "../translate.json";
+
 const Main = () => {
   const [more, setMore] = useState(false);
   const [inputs, setInputs] = useState({
@@ -29,6 +30,8 @@ const Main = () => {
   const [meronymy, setMeronymy] = useState();
   const [data, setData] = useState();
   const [noto, setNoto] = useState();
+  const [error, setError] = useState("");
+
   const fetchdata = async () => {
     const res = await axios.post("http://127.0.0.1:5000/find", inputs);
     setData(res.data.results[0]);
@@ -38,13 +41,39 @@ const Main = () => {
     SetAccessibility(res.data.accessibility);
     console.log();
   };
+
   const send = () => {
     fetchdata();
   };
+
+  const handleKeyUp = (event) => {
+    if (event.key === "Enter") {
+      send();
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputs({ ...inputs, word: value });
+
+    if (inputs.language === "arb") {
+      const frenchCharacters = /[A-Za-z]/;
+      if (frenchCharacters.test(value)) {
+        setError(
+          data_json[localStorage.getItem("lan")]["Erreur: Veuillez entrer des caractères arabes."]
+        );
+      } else {
+        setError("");
+      }
+    } else {
+      setError("");
+    }
+  };
+
   return (
-    <div className="flex h-[90vh] sm:flex-row flex-col">
+    <div className="flex min-h-[90vh] sm:flex-row flex-col">
       {/* SIDEBAR */}
-      <div className="flex-[2] flex flex-col items-center  p-4 gap-8 sm:border-r border-b">
+      <div className="flex-[2] flex flex-col items-center p-4 gap-8 sm:border-r border-b">
         <div className="w-[90%]">
           <div className="mb-1 p-1 font-bold">
             {localStorage.getItem("lan") &&
@@ -71,14 +100,17 @@ const Main = () => {
               ]}
           </div>
           <input
-            onChange={(e) => setInputs({ ...inputs, word: e.target.value })}
+            onChange={handleInputChange}
             className="border p-2 outline-none w-full rounded-md"
             type="text"
+            onKeyUp={handleKeyUp}
           />
+          {error && <div className="text-red-500 mt-2">{error}</div>}
         </div>
 
         <div className="w-[90%]">
           <button
+            type="submit"
             onClick={send}
             className=" rounded-md p-2 w-full text-white tracking-widest font-bold bg-gradient-to-r from-blue-600 to-cyan-600"
           >
@@ -164,7 +196,7 @@ const Main = () => {
                   {accessibility &&
                     accessibility.map((e, index) => {
                       return (
-                        <div key={index} className="text-black  font-normal">
+                        <div key={index} className="text-black font-normal">
                           {e}
                         </div>
                       );
@@ -181,7 +213,7 @@ const Main = () => {
                 ))
               : null} */}
             {/* graph area  */}
-            <div className="my-10  w-full ">
+            <div className="my-10 w-full">
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart
                   data={noto}
@@ -220,10 +252,16 @@ const Main = () => {
               </div>
 
               <input
-                onChange={(e) => setInputs({ ...inputs, word: e.target.value })}
-                className="border border-blue-500 w-[50%] sm:w-[70%]  h-full outline-none px-3"
-                placeholder="Nom à rechercher"
+                onChange={handleInputChange}
+                className="border border-blue-500 w-[50%] sm:w-[70%] h-full outline-none px-3"
+                placeholder={`${
+                  localStorage.getItem("lan") &&
+                  data_json[localStorage.getItem("lan")][
+                    "Entrer le nom propre à rechercher"
+                  ]
+                }`}
                 type="text"
+                onKeyUp={handleKeyUp}
               />
               <Link
                 to="/AdvancedSearch"
@@ -236,19 +274,19 @@ const Main = () => {
             </div>
 
             <div className="flex items-center justify-between w-[100%] sm:w-[70%] px-4">
-              <div className="flex flex-col  items-center h-full justify-between">
+              <div className="flex flex-col items-center h-full justify-between">
                 <div className="px-3 py-1 border rounded-md">un pays</div>
                 <img src={pays} alt="" />
                 <div className="text-xl text-blue-500 ">France</div>
               </div>
 
-              <div className="flex flex-col  items-center h-full justify-between">
+              <div className="flex flex-col items-center h-full justify-between">
                 <div className="px-3 py-1 border rounded-md">un nom</div>
                 <img src={nom} alt="" />
                 <div className="text-xl text-blue-500 ">Ninou</div>
               </div>
 
-              <div className="flex flex-col  items-center h-full justify-between">
+              <div className="flex flex-col items-center h-full justify-between">
                 <div className="px-3 py-1 border rounded-md">un prénom</div>
                 <img src={prenom} alt="" />
                 <div className="text-xl text-blue-500 ">Adel</div>
