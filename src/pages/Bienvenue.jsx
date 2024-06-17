@@ -52,7 +52,7 @@ const Bienvenue = () => {
           />
         </div>
         <div className="flex flex-col items-center">
-          <p className="font-bold">Francais</p>
+          <p className="font-bold">Français</p>
           <img
             onClick={() => {
               localStorage.setItem("lan", "fra");

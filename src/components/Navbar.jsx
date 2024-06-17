@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between sm:px-[10vh] px-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white h-[10vh] sticky top-0">
-      <Link to={"/"} className="text-2xl font-bold tracking-wider z-[2]">
+      <Link to={"/"} onClick={() => setMenue("hidden")} className="text-2xl font-bold tracking-wider z-[2]">
         {localStorage.getItem("lan") &&
           data[localStorage.getItem("lan")]["Prolexbase"]}
       </Link>
