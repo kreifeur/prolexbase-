@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import pays from "../assets/pays.jpg";
 import nom from "../assets/nom.jpg";
 import prenom from "../assets/prenom.jpg";
-import data_json from '../translate.json';
+import data_json from "../translate.json";
 
 const AdvancedSearch = () => {
   const [data, setData] = useState();
@@ -15,6 +15,7 @@ const AdvancedSearch = () => {
     last: "",
     first: "",
     middle: "",
+    type: "",
   });
   const [error, setError] = useState("");
 
@@ -41,7 +42,9 @@ const AdvancedSearch = () => {
       const frenchCharacters = /[A-Za-z]/;
       if (frenchCharacters.test(value)) {
         setError(
-          data_json[localStorage.getItem("lan")]["Erreur: Veuillez entrer des caractères arabes."]
+          data_json[localStorage.getItem("lan")][
+            "Erreur: Veuillez entrer des caractères arabes."
+          ]
         );
       } else {
         setError("");
@@ -57,7 +60,9 @@ const AdvancedSearch = () => {
         <div className="w-full">
           <div className="mb-1 p-1 font-bold">
             {localStorage.getItem("lan") &&
-              data_json[localStorage.getItem("lan")]["Choisir la langue de recherche"]}
+              data_json[localStorage.getItem("lan")][
+                "Choisir la langue de recherche"
+              ]}
           </div>
           <select
             className="p-1 outline-none w-[100%] rounded-md border"
@@ -71,32 +76,43 @@ const AdvancedSearch = () => {
         </div>
         <input
           className="p-2 border rounded-md outline-none w-[100%] "
-          placeholder={`${localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")][
-              "start with"
-            ]}`}
+          placeholder={`${
+            localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["start with"]
+          }`}
           type="text"
-          onChange={(e) => handleInputChange(e, 'first')}
+          onChange={(e) => handleInputChange(e, "first")}
           onKeyUp={handleKeyUp}
         />
         <input
           className="p-2 border rounded-md outline-none w-[100%] "
-          placeholder={`${localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")][
-              "contain"
-            ]}`}
+          placeholder={`${
+            localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["contain"]
+          }`}
           type="text"
-          onChange={(e) => handleInputChange(e, 'middle')}
+          onChange={(e) => handleInputChange(e, "middle")}
           onKeyUp={handleKeyUp}
         />
         <input
           className="p-2 border rounded-md outline-none w-[100%] "
-          placeholder={`${localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")][
-              "end with"
-            ]}`}
+          placeholder={`${
+            localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["end with"]
+          }`}
           type="text"
-          onChange={(e) => handleInputChange(e, 'last')}
+          onChange={(e) => setInputs(...inputs, type=e.target.value)}
+          
+        />
+
+        <input
+          className="p-2 border rounded-md outline-none w-[100%] "
+          placeholder={`${
+            localStorage.getItem("lan") &&
+            data_json[localStorage.getItem("lan")]["type"]
+          }`}
+          type="text"
+          onChange={(e) => handleInputChange(e, "type")}
           onKeyUp={handleKeyUp}
         />
         {error && <div className="text-red-500 mt-2">{error}</div>}
@@ -124,12 +140,14 @@ const AdvancedSearch = () => {
                 <IoSearch onClick={send} className=" text-xl text-white" />
               </div>
               <input
-                onChange={(e) => handleInputChange(e, 'middle')}
+                onChange={(e) => handleInputChange(e, "middle")}
                 className="border border-blue-500 w-[90%] h-full outline-none px-3"
-                placeholder={`${localStorage.getItem("lan") &&
+                placeholder={`${
+                  localStorage.getItem("lan") &&
                   data_json[localStorage.getItem("lan")][
                     "Entrer le nom propre à rechercher"
-                  ]}`}
+                  ]
+                }`}
                 type="text"
                 onKeyUp={handleKeyUp}
               />

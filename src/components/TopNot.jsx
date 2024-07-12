@@ -9,6 +9,7 @@ const TopNot = () => {
   const [lang, setLang] = useState(localStorage.lan);
   const [type, setType] = useState("Célébrité");
   const [year, setYear] = useState("2023");
+  const [frequency, setFrequency] = useState(1);
   const [limit, setLimit] = useState(10);
   const [resp, setResp] = useState(null);
 
@@ -18,6 +19,7 @@ const TopNot = () => {
       year: parseInt(year),
       limit: parseInt(limit),
       type: type,
+      frequency:frequency
     });
     setResp(data.data.results);
   };
@@ -93,6 +95,21 @@ const TopNot = () => {
             value={limit}
             onChange={(e) => setLimit(e.target.value)}
             onKeyUp={handleKeyUp}
+          />
+        </div>
+
+
+        <div className="w-[100%]">
+          <input
+            className="px-4 py-2 outline-none border w-full rounded-md"
+            
+            placeholder={localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")][
+                "frequence"
+              ]}
+            type="text"
+            value={frequency}
+            onChange={(e) => setFrequency(e.target.value)}
           />
         </div>
 
