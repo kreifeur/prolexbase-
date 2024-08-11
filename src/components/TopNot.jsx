@@ -12,6 +12,16 @@ const TopNot = () => {
   const [frequency, setFrequency] = useState(1);
   const [limit, setLimit] = useState(10);
   const [resp, setResp] = useState(null);
+  const [types, setTypes] = useState(["french"]);
+
+  const gettypes = async () => {
+    const res = await axios.get("http://127.0.0.1:5000/gettypes");
+    setTypes(res.data.types);
+  };
+
+  useState(() => {
+    gettypes();
+  }, []);
 
   const search = async () => {
     const data = await axios.post("http://127.0.0.1:5000/topnotority", {
@@ -19,14 +29,15 @@ const TopNot = () => {
       year: parseInt(year),
       limit: parseInt(limit),
       type: type,
-      frequency:frequency
+      frequency: frequency,
     });
     setResp(data.data.results);
   };
   const handleKeyUp = (event) => {
     if (event.key === "Enter") {
       search();
-    }}
+    }
+  };
 
   return (
     <div className="flex min-h-[90vh] sm:flex-row flex-col">
@@ -51,17 +62,16 @@ const TopNot = () => {
         </div>
 
         <div className="w-[100%]">
-          <input
-            className="px-4 py-2 outline-none border w-full rounded-md"
-            placeholder={localStorage.getItem("lan") &&
-              data_json[localStorage.getItem("lan")][
-                "type"
-              ]}
-            type="text"
+          <select
+            className="p-1 outline-none w-[100%] rounded-md border"
             value={type}
             onChange={(e) => setType(e.target.value)}
             onKeyUp={handleKeyUp}
-          />
+          >
+            {types
+              ? types.map((e) => <option value={e[0]}>{e[0]}</option>)
+              : null}
+          </select>
         </div>
 
         <div className="w-[100%]">
@@ -86,11 +96,12 @@ const TopNot = () => {
         <div className="w-[100%]">
           <input
             className="px-4 py-2 outline-none border w-full rounded-md"
-            
-            placeholder={localStorage.getItem("lan") &&
+            placeholder={
+              localStorage.getItem("lan") &&
               data_json[localStorage.getItem("lan")][
                 "nombre des celebrite a afficher"
-              ]}
+              ]
+            }
             type="text"
             value={limit}
             onChange={(e) => setLimit(e.target.value)}
@@ -98,15 +109,13 @@ const TopNot = () => {
           />
         </div>
 
-
         <div className="w-[100%]">
           <input
             className="px-4 py-2 outline-none border w-full rounded-md"
-            
-            placeholder={localStorage.getItem("lan") &&
-              data_json[localStorage.getItem("lan")][
-                "frequence"
-              ]}
+            placeholder={
+              localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["frequence"]
+            }
             type="text"
             value={frequency}
             onChange={(e) => setFrequency(e.target.value)}
@@ -118,9 +127,7 @@ const TopNot = () => {
           className=" rounded-md p-2 w-full text-white tracking-widest font-bold bg-gradient-to-r from-blue-600 to-cyan-600"
         >
           {localStorage.getItem("lan") &&
-              data_json[localStorage.getItem("lan")][
-                "recherche"
-              ]}
+            data_json[localStorage.getItem("lan")]["recherche"]}
         </button>
       </div>
 

@@ -28,6 +28,32 @@ const Pivot = () => {
     notoriete_eng: "",
     langue: "",
   });
+
+  const [existingItems,setExistingItems]= useState([])
+
+  const getpivots = async () => {
+    const res = await axios.get("http://127.0.0.1:5000/getpivots")
+    setExistingItems(res.data.pivots);
+      
+  };
+
+  useState(()=>{
+    getpivots()
+
+  },[])
+  const [message, setMessage] = useState('');
+
+  const verifyPivot=(newpivot)=>{
+    if (existingItems.includes(Number(newpivot)) || newpivot=='') {
+      /* setMessage(`The item '${newpivot}' exists in the list.`); */
+      setMessage('')
+
+    } else {
+      setMessage(`The pivot '${newpivot}' does not exist.`);
+    }
+  }
+
+  
   const addpivot = async () => {
     const res = await axios.post("http://127.0.0.1:5000/addpivot", {
       token: localStorage.token,
@@ -320,10 +346,11 @@ const Pivot = () => {
             
             <input
               value={check.newpivot}
-              onChange={(e) => setcheck({ ...check, newpivot: e.target.value })}
+              onChange={(e) => {setcheck({ ...check, newpivot: e.target.value }); verifyPivot(e.target.value) } }
               className="p-1 border rounded-md outline-none w-full "
               type="text"
             />
+            <p className="text-xs text-red-700">{message}</p>
           </div>
           <button
             className="px-2 py-1 bg-blue-500 text-white font-bold w-full"

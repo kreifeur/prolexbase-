@@ -10,6 +10,7 @@ import data_json from "../translate.json";
 
 const AdvancedSearch = () => {
   const [data, setData] = useState();
+  const [types, setTypes] = useState([['']]);
   const [inputs, setInputs] = useState({
     language: localStorage.lan,
     last: "",
@@ -53,6 +54,15 @@ const AdvancedSearch = () => {
       setError("");
     }
   };
+
+  const gettypes = async () => {
+    const res = await axios.get("http://127.0.0.1:5000/gettypes");
+    setTypes(res.data.types);
+  };
+
+  useState(() => {
+    gettypes();
+  }, []);
 
   return (
     <div className="flex min-h-[90vh] flex-col sm:flex-row">
@@ -101,20 +111,20 @@ const AdvancedSearch = () => {
             data_json[localStorage.getItem("lan")]["end with"]
           }`}
           type="text"
-          onChange={(e) => setInputs(...inputs, type=e.target.value)}
-          
+          onChange={(e) => setInputs(...inputs, (type = e.target.value))}
         />
 
-        <input
-          className="p-2 border rounded-md outline-none w-[100%] "
-          placeholder={`${
-            localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["type"]
-          }`}
-          type="text"
+ 
+
+        <select
+          className="p-1 outline-none w-[100%] rounded-md border"
+          value={inputs.type}
           onChange={(e) => handleInputChange(e, "type")}
           onKeyUp={handleKeyUp}
-        />
+        >
+          {types ? types.map((e) => <option value={e[0]}>{e[0]}</option>) : null}
+        </select>
+
         {error && <div className="text-red-500 mt-2">{error}</div>}
         <button
           className=" rounded-md p-2 w-full text-white tracking-widest font-bold bg-gradient-to-r from-blue-600 to-cyan-600"
