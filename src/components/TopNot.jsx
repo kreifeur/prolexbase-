@@ -9,7 +9,7 @@ const TopNot = () => {
   const [lang, setLang] = useState(localStorage.lan);
   const [type, setType] = useState("Célébrité");
   const [year, setYear] = useState("2023");
-  const [frequency, setFrequency] = useState(1);
+  const [frequency, setFrequency] = useState('');
   const [limit, setLimit] = useState(10);
   const [resp, setResp] = useState(null);
   const [types, setTypes] = useState(["french"]);
@@ -114,7 +114,8 @@ const TopNot = () => {
             className="px-4 py-2 outline-none border w-full rounded-md"
             placeholder={
               localStorage.getItem("lan") &&
-              data_json[localStorage.getItem("lan")]["frequence"]
+              
+              data_json[localStorage.getItem("lan")]["Veuillez saisir la notoriété"]
             }
             type="text"
             value={frequency}
@@ -134,7 +135,7 @@ const TopNot = () => {
       <div className="flex-[7] p-4">
         {resp ? (
           <div className="p-2 text-blue-600 font-bold">
-            Les {limit} {type} les plus notoriétaire en {year}{" "}
+            Les  {type}s les plus notoriétaire en {year}{" "}
           </div>
         ) : null}
         {resp ? (
@@ -142,7 +143,7 @@ const TopNot = () => {
             return (
               <div className="flex gap-4 p-2" key={index}>
                 <div>{e[0]}</div>
-                <div>{e[1]}</div>
+                {/* <div>{e[1]}</div> */}
               </div>
             );
           })

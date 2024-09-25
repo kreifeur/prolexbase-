@@ -29,31 +29,27 @@ const Pivot = () => {
     langue: "",
   });
 
-  const [existingItems,setExistingItems]= useState([])
+  const [existingItems, setExistingItems] = useState([]);
 
   const getpivots = async () => {
-    const res = await axios.get("http://127.0.0.1:5000/getpivots")
+    const res = await axios.get("http://127.0.0.1:5000/getpivots");
     setExistingItems(res.data.pivots);
-      
   };
 
-  useState(()=>{
-    getpivots()
+  useState(() => {
+    getpivots();
+  }, []);
+  const [message, setMessage] = useState("");
 
-  },[])
-  const [message, setMessage] = useState('');
-
-  const verifyPivot=(newpivot)=>{
-    if (existingItems.includes(Number(newpivot)) || newpivot=='') {
+  const verifyPivot = (newpivot) => {
+    if (existingItems.includes(Number(newpivot)) || newpivot == "") {
       /* setMessage(`The item '${newpivot}' exists in the list.`); */
-      setMessage('')
-
+      setMessage("");
     } else {
       setMessage(`The pivot '${newpivot}' does not exist.`);
     }
-  }
+  };
 
-  
   const addpivot = async () => {
     const res = await axios.post("http://127.0.0.1:5000/addpivot", {
       token: localStorage.token,
@@ -255,6 +251,7 @@ const Pivot = () => {
                 data_json[localStorage.getItem("lan")]["type"]}{" "}
               :
             </div>
+            =
             <input
               onChange={(e) => setUpdata({ ...updata, type: e.target.value })}
               value={updata.type}
@@ -268,6 +265,7 @@ const Pivot = () => {
                 data_json[localStorage.getItem("lan")]["notoriété"]}{" "}
               :
             </div>
+            <div>Fr :</div>
             <input
               onChange={(e) =>
                 setUpdata({ ...updata, notoriete_fra: e.target.value })
@@ -276,6 +274,8 @@ const Pivot = () => {
               className="p-1 border rounded-md outline-none w-full sm:w-[150px] "
               type="text"
             />
+
+            <div>Arb :</div>
 
             <input
               onChange={(e) =>
@@ -286,6 +286,7 @@ const Pivot = () => {
               type="text"
             />
 
+            <div>Eng :</div>
             <input
               onChange={(e) =>
                 setUpdata({ ...updata, notoriete_eng: e.target.value })
@@ -300,7 +301,7 @@ const Pivot = () => {
           {localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["Mettre en relation de"]}
           <div className="flex items-center gap-2">
-          {localStorage.getItem("lan") &&
+            {localStorage.getItem("lan") &&
               data_json[localStorage.getItem("lan")]["synonymes"]}{" "}
             <input
               className="cursor-pointer"
@@ -313,8 +314,8 @@ const Pivot = () => {
             />{" "}
           </div>
           <div className="flex items-center gap-2">
-          {localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["meronymes"]}{" "}
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["meronymes"]}{" "}
             <input
               className="cursor-pointer"
               checked={check.meronymy}
@@ -326,8 +327,8 @@ const Pivot = () => {
             />{" "}
           </div>
           <div className="flex items-center gap-2">
-          {localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["accessibilité"]}{" "}
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["accessibilité"]}{" "}
             <input
               onChange={() => {}}
               className="cursor-pointer"
@@ -341,12 +342,15 @@ const Pivot = () => {
             />{" "}
           </div>
           <div className="flex flex-col gap-1">
-          {localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["Avec le pivot"]}
-            
+            {localStorage.getItem("lan") &&
+              data_json[localStorage.getItem("lan")]["Avec le pivot"]}
+
             <input
               value={check.newpivot}
-              onChange={(e) => {setcheck({ ...check, newpivot: e.target.value }); verifyPivot(e.target.value) } }
+              onChange={(e) => {
+                setcheck({ ...check, newpivot: e.target.value });
+                verifyPivot(e.target.value);
+              }}
               className="p-1 border rounded-md outline-none w-full "
               type="text"
             />

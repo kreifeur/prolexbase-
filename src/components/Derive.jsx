@@ -94,7 +94,7 @@ const derive = () => {
         >
            {localStorage.getItem("lan") &&
                     data_json[localStorage.getItem("lan")][
-                      "modifier"
+                      "afficher"
                     ]}
         </button>
         <input

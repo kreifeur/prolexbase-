@@ -92,7 +92,7 @@ const Alias = () => {
         >
           {" "}
           {localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["modifier"]}
+            data_json[localStorage.getItem("lan")]["afficher"]}
         </button>
         <input
           className="border py-1 px-4  sm:w-[300px]"

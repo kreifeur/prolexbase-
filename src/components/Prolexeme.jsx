@@ -30,31 +30,37 @@ const Prolexeme = () => {
   };
 
   const deleteprolexeme = async () => {
-    const res = await axios.post(
-      "http://127.0.0.1:5000/deleteprolexeme",
-      {...inputs,token:localStorage.token,}
-    );
-    setInputs({
-      langue: localStorage.lan,
-      prolexeme: "",
-    });
-    setUpdata({
-      num_pivot: "",
-      type: "",
-      existance: "",
-      notoriete: "",
-      source: "",
-      prolexeme_1: "",
-      prolexeme_2: "",
-    });
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer le prolexeme ?")) {
+      const res = await axios.post(
+        "http://127.0.0.1:5000/deleteprolexeme",
+        { ...inputs, token: localStorage.token }
+      );
+      setInputs({
+        langue: localStorage.lan,
+        prolexeme: "",
+      });
+      setUpdata({
+        num_prolexeme: "",
+        num_pivot: "",
+        type: "",
+        existance: "",
+        notoriete: "",
+        source: "",
+        prolexeme_1: "",
+        prolexeme_2: "",
+      });
+    }
   };
 
   const updateit = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/updateprolexeme", {
-      token:localStorage.token,
-      ...updata,
-      ...inputs,
-    });
+    if (window.confirm("Êtes-vous sûr de vouloir modifier le prolexeme ?")) {
+      const res = await axios.post("http://127.0.0.1:5000/updateprolexeme", {
+        token: localStorage.token,
+        ...updata,
+        ...inputs,
+      });
+      // Vous pouvez ajouter ici un message de confirmation ou toute autre action après la modification
+    }
   };
   return (
     <div className="flex flex-col gap-3">

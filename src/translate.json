@@ -1,7 +1,11 @@
 {
     "fra": {
+        "Veuillez saisir le Numéro pivot":"Veuillez saisir le Numéro pivot",
+        "Veuillez saisir le nom du prolexeme":"Veuillez saisir le nom du prolexeme",
+        "Veuillez saisir la source":"Veuillez saisir la source",
+        "Veuillez saisir la notoriété":"Veuillez saisir la notoriété",
         "Bienvenus sur le Dictionnaire de noms propres": "Bienvenus sur le Dictionnaire de noms propres",
-        "Erreur: Veuillez entrer des caractères arabes.":"Erreur: Veuillez entrer des caractères arabes.",
+        "Erreur: Veuillez entrer des caractères arabes.":"Veuillez entrer des caractères arabes.",
         "prolexemes": "prolexemes",
         "Notorite": "notoriété",
         "prolexeme": "prolexeme",
@@ -54,8 +58,12 @@
          "nombre des celebrite a afficher":"nombre des celebrite a afficher"
     },
     "eng": {
+        "Veuillez saisir le Numéro pivot":"Please enter the Pivot Number",
+        "Veuillez saisir le nom du prolexeme":"Please enter the name of the prolexeme",
+        "Veuillez saisir la source":"Please enter the source",
+        "Veuillez saisir la notoriété":"Please enter the notoriety",
         "upload file":"upload file",
-        "Erreur: Veuillez entrer des caractères arabes.":"Error: Please enter Arabic characters.",
+        "Erreur: Veuillez entrer des caractères arabes.":"Please enter Arabic characters.",
         "Type": "type",
         "Num_pivot":"Pivot number",
         "Bienvenus sur le Dictionnaire de noms propres": "Welcome to the Proper Nouns Dictionary",
@@ -108,7 +116,11 @@
          "nombre des celebrite a afficher":"number of celebrite to display"
     },
     "arb": {
-        "Erreur: Veuillez entrer des caractères arabes.":"خطأ: الرجاء إدخال أحرف عربية",
+        "Veuillez saisir le Numéro pivot":"الرجاء إدخال الرقم المحوري",
+        "Veuillez saisir le nom du prolexeme":"الرجاء إدخال اسم البرولكسام",
+        "Veuillez saisir la source":"الرجاء إدخال المصدر",
+        "Veuillez saisir la notoriété":"الرجاء إدخال الشهرة",
+        "Erreur: Veuillez entrer des caractères arabes.":"الرجاء إدخال أحرف عربية",
         "Num_pivot":"رقم المحور",
         "Bienvenus sur le Dictionnaire de noms propres": "مرحبًا بكم في قاموس الأسماء العلم",
         "prolexemes": "بروليكسام",
