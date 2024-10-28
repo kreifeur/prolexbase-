@@ -31,15 +31,16 @@ const Main = () => {
   const [data, setData] = useState();
   const [noto, setNoto] = useState();
   const [error, setError] = useState("");
+  const [exist, setExist] = useState("");
 
   const fetchdata = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/find", inputs);
+    const res = await axios.post("http://127.0.0.1:5000/find", inputs)
+    setExist(res.data.exist)
     setData(res.data.results[0]);
     setNoto(res.data.notority);
     SetSynonymy(res.data.synonymy);
     setMeronymy(res.data.meronymy);
     SetAccessibility(res.data.accessibility);
-    console.log();
   };
 
   const send = () => {
@@ -121,8 +122,10 @@ const Main = () => {
       </div>
 
       {/* Main window */}
+      
       <div className="flex-[7] p-4 w-full">
         {data ? (
+          exist != "" ? (<div>le prolexeme n existe pas </div>) : 
           <div className="flex flex-col gap-2 w-full ">
             {" "}
             <div className="font-bold text-xl px-[5vh] py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white max-w-max rounded-md">

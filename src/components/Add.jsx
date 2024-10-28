@@ -44,13 +44,10 @@ const Add = () => {
       ...inputs,
       langue: lang,
     });
-    setInputs({
+    setInputs({...inputs,
       prolexeme: "",
       source: "",
       Num_pivot: "",
-      Type: "",
-      Existance: "",
-      Notorite: "",
     });
   };
 
