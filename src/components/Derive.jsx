@@ -97,6 +97,7 @@ const derive = () => {
                       "afficher"
                     ]}
         </button>
+        {window.localStorage.getItem("token") ? 
         <input
           className="border py-1 px-4  sm:w-[300px]"
           value={updata.derive}
@@ -104,7 +105,8 @@ const derive = () => {
           type="text"
           name=""
           id=""
-        />
+        />:null}
+         {window.localStorage.getItem("token") ? 
         <button
           className="px-8 sm:max-w-max rounded-md py-1 bg-blue-500 text-white font-bold"
           onClick={ajouter}
@@ -113,7 +115,7 @@ const derive = () => {
                     data_json[localStorage.getItem("lan")][
                       "ajouter"
                     ]}
-        </button>
+        </button>:null}
 
         {derive.map((item, index) => {
           return (
@@ -131,6 +133,7 @@ const derive = () => {
                 id=""
                 className="p-1 border rounded-md outline-none"
               ></input>
+              {window.localStorage.getItem("token") ? 
               <div className="flex items-center gap-5">
                 <button
                   className="px-8 sm:max-w-max rounded-md py-1 bg-blue-500 text-white font-bold"
@@ -151,7 +154,7 @@ const derive = () => {
                       "supprimer"
                     ]}
                 </button>
-              </div>
+              </div>:null}
             </div>
           );
         })}

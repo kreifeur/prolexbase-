@@ -1,3 +1,10 @@
+/* {window.localStorage.getItem("token") ? (
+  <Link onClick={() => setMenue("hidden")} to={"/consultation"}>
+    {localStorage.getItem("lan") &&
+      data[localStorage.getItem("lan")]["Consultation"]}
+  </Link>
+) : null} */
+
 import axios from "axios";
 import React, { useState } from "react";
 import data_json from "../translate.json";
@@ -31,6 +38,8 @@ const Alias = () => {
     });
     modifier();
   };
+
+  
 
   const update = async (item) => {
     const res = await axios.post("http://127.0.0.1:5000/modifieralias", {
@@ -86,14 +95,18 @@ const Alias = () => {
       <div className="flex flex-col gap-4  ">
         <div>{localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["alias"]} :</div>
+            
         <button
           className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
           onClick={modifier}
         >
+
           {" "}
           {localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["afficher"]}
         </button>
+        
+        {window.localStorage.getItem("token") ? 
         <input
           className="border py-1 px-4  sm:w-[300px]"
           value={updata.alias}
@@ -101,7 +114,9 @@ const Alias = () => {
           type="text"
           name=""
           id=""
-        />
+        /> : null}
+        
+        {window.localStorage.getItem("token") ? 
         <button
           className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
           onClick={ajouter}
@@ -109,7 +124,7 @@ const Alias = () => {
           {" "}
           {localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["ajouter"]}
-        </button>
+        </button>:null}
 
         {alias.map((item, index) => {
           return (
@@ -127,6 +142,9 @@ const Alias = () => {
                 id=""
                 className="p-1 border rounded-md outline-none"
               ></input>
+              
+
+              {window.localStorage.getItem("token") ? 
               <div className="flex items-center gap-5">
                 <button
                   className="px-8 rounded-md py-1 bg-blue-500 text-white font-bold sm:max-w-max"
@@ -144,7 +162,7 @@ const Alias = () => {
                   {localStorage.getItem("lan") &&
                     data_json[localStorage.getItem("lan")]["supprimer"]}
                 </button>
-              </div>
+              </div> : null}
             </div>
           );
         })}

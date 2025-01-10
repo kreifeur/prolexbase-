@@ -89,13 +89,14 @@ const Prolexeme = () => {
           {localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["afficher"]}
         </button>
+        {window.localStorage.getItem("token") ? 
         <button
           className="px-4 py-1 bg-red-700 text-white font-bold w-full sm:max-w-max rounded-sm"
           onClick={deleteprolexeme}
         >
           {localStorage.getItem("lan") &&
             data_json[localStorage.getItem("lan")]["supprimer"]}
-        </button>
+        </button>:null}
       </div>
 
       <div className="flex gap-2 items-center  sm:flex-row  flex-col ">
@@ -159,9 +160,9 @@ const Prolexeme = () => {
         <div>{updata.prolexeme_1}</div>
         <div>{updata.prolexeme_2}</div>
       </div>
-
+      {window.localStorage.getItem("token") ? 
       <button className="px-8 py-1 bg-blue-500 text-white font-bold sm:max-w-max rounded-sm" onClick={updateit}>{localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["modifier"]}</button>
+            data_json[localStorage.getItem("lan")]["modifier"]}</button>:null}
     </div>
   );
 };

@@ -31,6 +31,7 @@ const App = () => {
 
           <Route path="/AdvancedSearch" element={<AdvancedSearch />} />
           <Route path="/topnot" element={<TopNot />} />
+          <Route path="/consultation" element={<Consultation />} />
           <Route
             path="/add"
             element={
@@ -39,14 +40,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-          <Route
-            path="/consultation"
-            element={
-              <RequireAuth>
-                <Consultation />
-              </RequireAuth>
-            }
-          />
+
           <Route
             path="/file"
             element={

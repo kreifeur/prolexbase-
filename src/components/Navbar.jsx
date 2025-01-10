@@ -13,7 +13,11 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between sm:px-[10vh] px-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white h-[10vh] sticky top-0">
-      <Link to={"/"} onClick={() => setMenue("hidden")} className="text-2xl font-bold tracking-wider z-[2]">
+      <Link
+        to={"/"}
+        onClick={() => setMenue("hidden")}
+        className="text-2xl font-bold tracking-wider z-[2]"
+      >
         {localStorage.getItem("lan") &&
           data[localStorage.getItem("lan")]["Prolexbase"]}
       </Link>
@@ -39,12 +43,10 @@ const Navbar = () => {
           </Link>
         ) : null}
 
-        {window.localStorage.getItem("token") ? (
-          <Link to={"/consultation"}>
-            {localStorage.getItem("lan") &&
-              data[localStorage.getItem("lan")]["Consultation"]}
-          </Link>
-        ) : null}
+        <Link to={"/consultation"}>
+          {localStorage.getItem("lan") &&
+            data[localStorage.getItem("lan")]["Consultation"]}
+        </Link>
 
         {/* {window.localStorage.getItem("token") ? (
           <Link to={"/file"}>add file</Link>
@@ -85,7 +87,7 @@ const Navbar = () => {
           <Link onClick={() => setMenue("hidden")} to={"/topnot"}>
             {localStorage.getItem("lan") &&
               data[localStorage.getItem("lan")]["Top Notoriété"]}
-          </Link  >
+          </Link>
           {window.localStorage.getItem("token") ? (
             <Link onClick={() => setMenue("hidden")} to={"/add"}>
               {localStorage.getItem("lan") &&
@@ -93,12 +95,10 @@ const Navbar = () => {
             </Link>
           ) : null}
 
-          {window.localStorage.getItem("token") ? (
-            <Link onClick={() => setMenue("hidden")} to={"/consultation"}>
-              {localStorage.getItem("lan") &&
-                data[localStorage.getItem("lan")]["Consultation"]}
-            </Link>
-          ) : null}
+          <Link onClick={() => setMenue("hidden")} to={"/consultation"}>
+            {localStorage.getItem("lan") &&
+              data[localStorage.getItem("lan")]["Consultation"]}
+          </Link>
 
           {window.localStorage.getItem("token") ? (
             <button onClick={logout}>
