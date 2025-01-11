@@ -1,5 +1,6 @@
 {
     "fra": {
+        "le prolexeme n existe pas":"le prolexeme n existe pas",
         "Veuillez saisir le Numéro pivot":"Veuillez saisir le Numéro pivot",
         "Veuillez saisir le nom du prolexeme":"Veuillez saisir le nom du prolexeme",
         "Veuillez saisir la source":"Veuillez saisir la source",
@@ -58,6 +59,7 @@
          "nombre des celebrite a afficher":"nombre des celebrite a afficher"
     },
     "eng": {
+        "le prolexeme n existe pas":"The prolexeme does not exist",
         "Veuillez saisir le Numéro pivot":"Please enter the Pivot Number",
         "Veuillez saisir le nom du prolexeme":"Please enter the name of the prolexeme",
         "Veuillez saisir la source":"Please enter the source",
@@ -116,6 +118,7 @@
          "nombre des celebrite a afficher":"number of celebrite to display"
     },
     "arb": {
+        "le prolexeme n existe pas":"البروليكسم غير موجود",
         "Veuillez saisir le Numéro pivot":"الرجاء إدخال الرقم المحوري",
         "Veuillez saisir le nom du prolexeme":"الرجاء إدخال اسم البرولكسام",
         "Veuillez saisir la source":"الرجاء إدخال المصدر",

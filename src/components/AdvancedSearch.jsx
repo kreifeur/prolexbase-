@@ -16,7 +16,7 @@ const AdvancedSearch = () => {
     last: "",
     first: "",
     middle: "",
-    type: "",
+    type: "Nom propre",
   });
   const [error, setError] = useState("");
 

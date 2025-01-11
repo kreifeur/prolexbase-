@@ -34,8 +34,8 @@ const Main = () => {
   const [exist, setExist] = useState("");
 
   const fetchdata = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/find", inputs)
-    setExist(res.data.exist)
+    const res = await axios.post("http://127.0.0.1:5000/find", inputs);
+    setExist(res.data.exist);
     setData(res.data.results[0]);
     setNoto(res.data.notority);
     SetSynonymy(res.data.synonymy);
@@ -61,7 +61,9 @@ const Main = () => {
       const frenchCharacters = /[A-Za-z]/;
       if (frenchCharacters.test(value)) {
         setError(
-          data_json[localStorage.getItem("lan")]["Erreur: Veuillez entrer des caractères arabes."]
+          data_json[localStorage.getItem("lan")][
+            "Erreur: Veuillez entrer des caractères arabes."
+          ]
         );
       } else {
         setError("");
@@ -122,92 +124,100 @@ const Main = () => {
       </div>
 
       {/* Main window */}
-      
+
       <div className="flex-[7] p-4 w-full">
         {data ? (
-          exist != "" ? (<div>le prolexeme n existe pas </div>) : 
-          <div className="flex flex-col gap-2 w-full ">
-            {" "}
-            <div className="font-bold text-xl px-[5vh] py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white max-w-max rounded-md">
-              {data[1]}
-            </div>{" "}
-            <div className="p-2 border-2 border-blue-600 text-blue-600 font-bold flex flex-col gap-2">
-              <div>
-                Type : <span>{data[4]}</span>
-              </div>
-              <div>
-                Existence : <span>{data[5]}</span>
-              </div>
-              <div>
-                NUM_FREQUENCY : <span>{data[2]}</span>
-              </div>
-              <div className="flex gap-4">
-                WIKIPEDIA_LINK
-                <span>
-                  <a
-                    target="_blank"
-                    className="flex items-center gap-4"
-                    href={`https://${inputs.language.slice(
-                      0,
-                      2
-                    )}.wikipedia.org/wiki/${data[3]}`}
-                  >
-                    {" "}
-                    {data[3]} <BiLinkExternal />
-                  </a>
-                </span>
-              </div>
-              <div>
-                SYNONYMY :
+          exist != "" ? (
+            <div>
+              {" "}
+              {localStorage.getItem("lan") &&
+                data_json[localStorage.getItem("lan")][
+                  "le prolexeme n existe pas"
+                ]}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2 w-full ">
+              {" "}
+              <div className="font-bold text-xl px-[5vh] py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white max-w-max rounded-md">
+                {data[1]}
+              </div>{" "}
+              <div className="p-2 border-2 border-blue-600 text-blue-600 font-bold flex flex-col gap-2">
                 <div>
-                  {synonymy.map((e, index) => {
-                    return (
-                      <div key={index} className="text-black font-normal">
-                        {e}
-                      </div>
-                    );
-                  })}
+                  Type : <span>{data[4]}</span>
                 </div>
-              </div>
-
-              <div
-                className="cursor-pointer text-right"
-                onClick={() => setMore(!more)}
-              >
-                {more ? "hide" : "see more"}
-              </div>
-
-              <div
-                className={`${
-                  more == false ? "hidden" : "flex flex-col gap-2"
-                }`}
-              >
-                <div>meronymy :</div>
                 <div>
-                  {meronymy &&
-                    meronymy.map((e, index) => {
-                      return (
-                        <div key={index} className=" text-black font-normal">
-                          {e}
-                        </div>
-                      );
-                    })}
+                  Existence : <span>{data[5]}</span>
                 </div>
-
-                <div>accessibility :</div>
                 <div>
-                  {accessibility &&
-                    accessibility.map((e, index) => {
+                  NUM_FREQUENCY : <span>{data[2]}</span>
+                </div>
+                <div className="flex gap-4">
+                  WIKIPEDIA_LINK
+                  <span>
+                    <a
+                      target="_blank"
+                      className="flex items-center gap-4"
+                      href={`https://${inputs.language.slice(
+                        0,
+                        2
+                      )}.wikipedia.org/wiki/${data[3]}`}
+                    >
+                      {" "}
+                      {data[3]} <BiLinkExternal />
+                    </a>
+                  </span>
+                </div>
+                <div>
+                  SYNONYMY :
+                  <div>
+                    {synonymy.map((e, index) => {
                       return (
                         <div key={index} className="text-black font-normal">
                           {e}
                         </div>
                       );
                     })}
+                  </div>
+                </div>
+
+                <div
+                  className="cursor-pointer text-right"
+                  onClick={() => setMore(!more)}
+                >
+                  {more ? "hide" : "see more"}
+                </div>
+
+                <div
+                  className={`${
+                    more == false ? "hidden" : "flex flex-col gap-2"
+                  }`}
+                >
+                  <div>meronymy :</div>
+                  <div>
+                    {meronymy &&
+                      meronymy.map((e, index) => {
+                        return (
+                          <div key={index} className=" text-black font-normal">
+                            {e}
+                          </div>
+                        );
+                      })}
+                  </div>
+
+                  <div>accessibility :</div>
+                  <div>
+                    {accessibility &&
+                      accessibility.map((e, index) => {
+                        return (
+                          <div key={index} className="text-black font-normal">
+                            {e}
+                          </div>
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
-            </div>
-            {/*  {noto
+              {/*  {noto
               ? noto.map((e,index) => (
                   <div c key={index}lassName="flex">
                     <div>Notority {e['year']} : </div>
@@ -215,34 +225,43 @@ const Main = () => {
                   </div>
                 ))
               : null} */}
-            {/* graph area  */}
-            <div className="my-10 w-full">
-              <ResponsiveContainer width="100%" height={200}>
-                <AreaChart
-                  data={noto}
-                  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-                >
-                  <defs>
-                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#2563eb" stopOpacity={0.8} />
-                      <stop offset="95%" stopColor="#0891b2" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <XAxis dataKey="year" />
-                  <YAxis />
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip />
-                  <Area
-                    type="monotone"
-                    dataKey="noto"
-                    stroke="#8884d8"
-                    fillOpacity={1}
-                    fill="url(#colorUv)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              {/* graph area  */}
+              <div className="my-10 w-full">
+                <ResponsiveContainer width="100%" height={200}>
+                  <AreaChart
+                    data={noto}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                  >
+                    <defs>
+                      <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                        <stop
+                          offset="5%"
+                          stopColor="#2563eb"
+                          stopOpacity={0.8}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor="#0891b2"
+                          stopOpacity={0}
+                        />
+                      </linearGradient>
+                    </defs>
+                    <XAxis dataKey="year" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Area
+                      type="monotone"
+                      dataKey="noto"
+                      stroke="#8884d8"
+                      fillOpacity={1}
+                      fill="url(#colorUv)"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
             </div>
-          </div>
+          )
         ) : (
           <div className="flex flex-col gap-[10vh] items-center justify-center h-full">
             <div className="text-3xl font-bold text-blue-500">
