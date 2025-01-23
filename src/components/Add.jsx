@@ -44,11 +44,24 @@ const Add = () => {
       ...inputs,
       langue: lang,
     });
-    setInputs({...inputs,
-      prolexeme: "",
-      source: "",
-      Num_pivot: "",
-    });
+    setInputs({ ...inputs, prolexeme: "", source: "", Num_pivot: "" });
+
+    if (res.data.message == "this element exists") {
+      alert(
+        localStorage.getItem("lan") &&
+          data_json[localStorage.getItem("lan")][
+            "le prolexeme existe deja"
+          ]
+      );
+    }
+    else{
+      alert(
+        localStorage.getItem("lan") &&
+          data_json[localStorage.getItem("lan")][
+            "le prolexeme est cree avec le num prolexeme"
+          ] + ' : ' + res.data.message
+      );
+    }
   };
 
   const addData = () => {
@@ -88,7 +101,9 @@ const Add = () => {
           type="text"
           placeholder={
             localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["Veuillez saisir le nom du prolexeme"]
+            data_json[localStorage.getItem("lan")][
+              "Veuillez saisir le nom du prolexeme"
+            ]
           }
           id="prolexeme"
           name="prolexeme"
@@ -118,7 +133,9 @@ const Add = () => {
           type="text"
           placeholder={
             localStorage.getItem("lan") &&
-            data_json[localStorage.getItem("lan")]["Veuillez saisir le Numéro pivot"]
+            data_json[localStorage.getItem("lan")][
+              "Veuillez saisir le Numéro pivot"
+            ]
           }
           id="Num_pivot"
           name="Num_pivot"
@@ -139,7 +156,7 @@ const Add = () => {
           }
         >
           {types
-            ? types.map((e) => <option value={e[0]}>{e[0]}</option>)
+            ? types.map((e,index) => <option key={index} value={e[0]}>{e[0]}</option>)
             : null}
         </select>
       </div>
@@ -156,13 +173,12 @@ const Add = () => {
           }
         >
           {existances
-            ? existances.map((e) => <option value={e[0]}>{e[0]}</option>)
+            ? existances.map((e,index) => <option key={index} value={e[0]}>{e[0]}</option>)
             : null}
         </select>
       </div>
 
       <div className="flex flex-col gap-2 sm:w-[40%] w-full">
-
         <select
           className="border p-2 outline-none rounded-md"
           value={inputs.Notorite}
